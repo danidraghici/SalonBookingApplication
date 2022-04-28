@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<HBox prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.loose.fis.controllers.RegistrationClientController">
+    <children>
+        <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #FCF1F5;">
+            <children>
+                <ImageView fitHeight="200.0" fitWidth="301.0" layoutY="114.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../../../docs/salon.jpg" />
+                    </image></ImageView>
+            </children>
+        </AnchorPane>
+        <AnchorPane prefHeight="400.0" prefWidth="403.0" style="-fx-background-color: #E3D3DE;">
+            <children>
+                <ImageView fitHeight="51.0" fitWidth="53.0" layoutX="166.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../../../docs/web.png" />
+                    </image></ImageView>
+                <TextField layoutX="193.0" layoutY="127.0" promptText="Name" />
+                <TextField layoutX="193.0" layoutY="167.0" promptText="UserName" />
+                <Label layoutX="75.0" layoutY="131.0" text="Name" textFill="#480cb7">
+                    <font>
+                        <Font name="Georgia" size="20.0" />
+                    </font>
+                </Label>
+                <Label layoutX="75.0" layoutY="171.0" text="UserName" textFill="#480cb7">
+                    <font>
+                        <Font name="Georgia" size="20.0" />
+                    </font>
+                </Label>
+                <Label layoutX="78.0" layoutY="248.0" text="Phone" textFill="#480cb7">
+                    <font>
+                        <Font name="Georgia" size="20.0" />
+                    </font>
+                </Label>
+                <Label layoutX="79.0" layoutY="200.0" prefHeight="37.0" prefWidth="90.0" text="Password" textAlignment="CENTER" textFill="#480cb7">
+                    <font>
+                        <Font name="Georgia" size="20.0" />
+                    </font>
+                </Label>
+                <TextField layoutX="193.0" layoutY="244.0" promptText="Phone" />
+                <PasswordField layoutX="193.0" layoutY="206.0" promptText="Password" />
+            </children></AnchorPane>
+    </children>
+</HBox>

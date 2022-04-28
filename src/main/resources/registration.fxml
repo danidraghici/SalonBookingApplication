@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+        <?import javafx.scene.control.*?>
+        <?import javafx.scene.image.*?>
+        <?import javafx.scene.layout.*?>
+        <?import javafx.scene.text.*?>
+
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.loose.fis.controllers.RegistrationSalonController">
+    <children>
+        <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #FCF1F5;">
+            <children>
+                <ImageView blendMode="DARKEN" fitHeight="200.0" fitWidth="301.0" layoutY="114.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../../../docs/salon.jpg" />
+
+                    </image>
+                </ImageView>
+            </children>
+        </AnchorPane>
+        <AnchorPane prefHeight="436.0" prefWidth="420.0" style="-fx-background-color: #E3D3DE;">
+            <children>
+                <TextField layoutX="186.0" layoutY="138.0" prefHeight="3.0" prefWidth="149.0" promptText="Name" />
+                <TextField layoutX="186.0" layoutY="171.0" prefHeight="5.0" prefWidth="149.0" promptText="UserName" />
+                <TextField layoutX="186.0" layoutY="245.0" prefHeight="9.0" prefWidth="149.0" promptText="Phone" />
+                <Label layoutX="54.0" layoutY="135.0" prefHeight="8.0" prefWidth="53.0" text="Name" textFill="#480cb7">
+                    <font>
+                        <Font name="Georgia" size="20.0" />
+                    </font></Label>
+                <Label layoutX="51.0" layoutY="172.0" prefHeight="15.0" prefWidth="95.0" text="UserName" textFill="#480cb7">
+                    <font>
+                        <Font name="Georgia" size="20.0" />
+                    </font></Label>
+                <Label layoutX="54.0" layoutY="209.0" prefHeight="16.0" prefWidth="83.0" text="Password" textFill="#480cb7">
+                    <font>
+                        <Font name="Times New Roman" size="21.0" />
+                    </font></Label>
+                <Label layoutX="56.0" layoutY="246.0" prefHeight="24.0" prefWidth="74.0" text="Phone" textFill="#480cb7">
+                    <font>
+                        <Font name="Georgia" size="20.0" />
+                    </font></Label>
+                <Label layoutX="58.0" layoutY="273.0" prefHeight="45.0" prefWidth="67.0" text="Adress" textFill="#480cb7">
+                    <font>
+                        <Font name="Georgia" size="20.0" />
+                    </font></Label>
+                <TextField layoutX="186.0" layoutY="282.0" prefHeight="8.0" prefWidth="149.0" promptText="Adress" />
+                <ImageView fitHeight="51.0" fitWidth="53.0" layoutX="166.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../../../docs/web.png" />
+                    </image>
+                </ImageView>
+                <PasswordField layoutX="186.0" layoutY="209.0" promptText="Password" />
+            </children></AnchorPane>
+    </children>
+</HBox>
