@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.loose.fis.controllers.loginController">
+   <children>
+      <AnchorPane prefHeight="400.0" prefWidth="263.0" style="-fx-background-color: #FCF1F5;">
+         <children>
+            <ImageView fitHeight="268.0" fitWidth="216.0" layoutY="92.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../docs/salon.jpg" />
+               </image>
+            </ImageView>
+         </children></AnchorPane>
+      <AnchorPane prefHeight="400.0" prefWidth="445.0" style="-fx-background-color: #E3D3DE;">
+         <children>
+            <ImageView fitHeight="57.0" fitWidth="58.0" layoutX="156.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../docs/unlock.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="50.0" layoutY="117.0" prefHeight="20.0" prefWidth="72.0" text="UserName" textFill="#480cb7">
+               <font>
+                  <Font name="Georgia" size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="50.0" layoutY="178.0" prefHeight="20.0" prefWidth="72.0" text="Password" textFill="#480cb7">
+               <font>
+                  <Font name="Georgia" size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="usernameTextField" layoutX="123.0" layoutY="109.0" prefHeight="36.0" prefWidth="216.0" promptText="UserName">
+               <font>
+                  <Font name="Georgia" size="12.0" />
+               </font></TextField>
+            <PasswordField fx:id="passwordField" layoutX="123.0" layoutY="170.0" prefHeight="36.0" prefWidth="216.0" promptText="Password">
+               <font>
+                  <Font name="Georgia" size="12.0" />
+               </font></PasswordField>
+            <Button fx:id="loginButton" layoutX="128.0" layoutY="256.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="210.0" style="-fx-background-color: #8758C6; -fx-cursor: hand;" text="Login" textAlignment="CENTER" textFill="#f5f2fa">
+               <font>
+                  <Font name="Georgia" size="14.0" />
+               </font></Button>
+            <ImageView fitHeight="49.0" fitWidth="36.0" layoutX="11.0" layoutY="109.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../docs/user.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="30.0" fitWidth="27.0" layoutX="16.0" layoutY="174.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../docs/password.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="50.0" layoutY="325.0" prefHeight="36.0" prefWidth="177.0" text="Don't have an account yet?" textFill="#480cb7">
+               <font>
+                  <Font name="Georgia" size="14.0" />
+               </font>
+            </Label>
+            <Button fx:id="registerButton" layoutX="233.0" layoutY="330.0" mnemonicParsing="false" style="-fx-background-color: transparent; -fx-cursor: hand;" text="Register" textFill="#480cb7">
+               <font>
+                  <Font name="Georgia Bold" size="14.0" />
+               </font>
+            </Button>
+            <ImageView fitHeight="26.0" fitWidth="27.0" layoutX="16.0" layoutY="330.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../docs/hairdressing.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+   </children>
+</HBox>
