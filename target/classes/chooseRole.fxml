@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.loose.fis.controllers.ChooseRole">
+   <children>
+      <AnchorPane prefHeight="400.0" prefWidth="397.0" style="-fx-background-color: #E3D3DE;">
+         <children>
+            <ImageView fx:id="clientView" fitHeight="139.0" fitWidth="120.0" layoutX="74.0" layoutY="136.0" onMousePressed="#mousePressedClient" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../../../docs/client.png">
+
+                        </Image>
+                    </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="400.0" prefWidth="421.0" style="-fx-background-color: #E3D3DE;">
+         <children>
+            <ImageView fx:id="salonView" fitHeight="139.0" fitWidth="120.0" layoutX="74.0" layoutY="136.0" onMousePressed="#mousePressedSalon" pickOnBounds="true" preserveRatio="true">
+                <image>
+                    <Image url="@../../../docs/hair-salon.png">
+
+                    </Image>
+                </image>
+            </ImageView>
+
+         </children>
+      </AnchorPane>
+   </children>
+</HBox>
