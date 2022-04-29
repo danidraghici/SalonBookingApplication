@@ -1,30 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
 <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.loose.fis.controllers.ChooseRole">
    <children>
       <AnchorPane prefHeight="400.0" prefWidth="397.0" style="-fx-background-color: #E3D3DE;">
          <children>
-            <ImageView fx:id="clientView" fitHeight="139.0" fitWidth="120.0" layoutX="74.0" layoutY="136.0" onMousePressed="#mousePressedClient" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="ClientView" fitHeight="135.0" fitWidth="145.0" layoutX="74.0" layoutY="121.0" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@../../../docs/client.png">
+                        <Image url="@../../../docs/user%20(1).png">
 
                         </Image>
                     </image>
             </ImageView>
+            <Button fx:id="client" layoutX="108.0" layoutY="267.0" mnemonicParsing="false" style="-fx-background-color: transparent; -fx-cursor: hand;" text="Client" textFill="#480cb7">
+               <font>
+                  <Font name="Georgia" size="18.0" />
+               </font>
+            </Button>
          </children>
       </AnchorPane>
       <AnchorPane prefHeight="400.0" prefWidth="421.0" style="-fx-background-color: #E3D3DE;">
          <children>
-            <ImageView fx:id="salonView" fitHeight="139.0" fitWidth="120.0" layoutX="74.0" layoutY="136.0" onMousePressed="#mousePressedSalon" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="SalonView" fitHeight="110.0" fitWidth="151.0" layoutX="96.0" layoutY="140.0" pickOnBounds="true" preserveRatio="true">
                 <image>
                     <Image url="@../../../docs/hair-salon.png">
 
                     </Image>
                 </image>
             </ImageView>
+            <Button fx:id="salon" layoutX="108.0" layoutY="271.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="82.0" style="-fx-background-color: transparent; -fx-cursor: hand;" text="Salon" textFill="#480cb7">
+               <font>
+                  <Font name="Georgia" size="18.0" />
+               </font>
+            </Button>
 
          </children>
       </AnchorPane>

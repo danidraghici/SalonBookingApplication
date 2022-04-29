@@ -1,2 +1,9 @@
 org\loose\fis\controllers\ChooseRole$2.class
+org\loose\fis\controllers\RegistrationSalonController$2.class
 org\loose\fis\controllers\ChooseRole$1.class
+org\loose\fis\DataBaseUtil.class
+org\loose\fis\controllers\loginController$1.class
+org\loose\fis\controllers\RegistrationClientController$2.class
+org\loose\fis\controllers\loginController$2.class
+org\loose\fis\controllers\RegistrationClientController$1.class
+org\loose\fis\controllers\RegistrationSalonController$1.class

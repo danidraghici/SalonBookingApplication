@@ -1,21 +1,21 @@
 package org.loose.fis;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+public class Main extends Application {
 
-public class Main {
+
+    public void start(Stage primaryStage) throws Exception {
+
+        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("login.fxml"));
+        primaryStage.setTitle("Login");
+        primaryStage.setScene(new Scene(root, 600, 400));
+        primaryStage.show();
+    }
+
     public static void main(String[] args) {
-        try {
-            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/salonbooking", "root", "rootpassword");
-            Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery("select * from loggedinusers");
-            while (resultSet.next()) {
-                System.out.println(resultSet.getString("username"));
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
+        launch(args);
     }
 }
