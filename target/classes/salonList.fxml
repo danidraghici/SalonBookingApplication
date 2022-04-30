@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #E3D3DE;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.loose.fis.controllers.SalonListController">
+   <children>
+      <ImageView fx:id="comb" fitHeight="76.0" fitWidth="100.0" layoutX="79.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../docs/comb.png" />
+         </image>
+         <effect>
+            <DropShadow />
+         </effect></ImageView>
+      <Label fx:id="choosesalon" layoutX="190.0" layoutY="15.0" prefHeight="76.0" prefWidth="325.0" text="Choose Salon" textFill="#480cb7">
+         <font>
+            <Font name="Georgia Italic" size="49.0" />
+         </font>
+         <effect>
+            <Glow />
+         </effect>
+      </Label>
+      <ListView fx:id="accountListView" layoutX="208.0" layoutY="138.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #E3D3DE;">
+         <effect>
+            <DropShadow />
+         </effect>
+      </ListView>
+   </children>
+</Pane>
