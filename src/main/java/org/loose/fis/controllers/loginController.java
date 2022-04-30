@@ -76,5 +76,7 @@ public class loginController implements Initializable {
         Image accountImage = new Image(accountFile.toURI().toString());
         accountPhoto.setImage(accountImage);
 
+
+
     }
 }
