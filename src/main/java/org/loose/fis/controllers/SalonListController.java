@@ -1,10 +1,14 @@
 package org.loose.fis.controllers;
 
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import org.loose.fis.DataBaseUtil;
 
 import java.io.File;
 import java.net.URL;
@@ -19,6 +23,10 @@ public class SalonListController implements Initializable {
     private ListView<String> accountListView;
     @FXML
     private ImageView comb;
+    @FXML
+    private Button selectBtn;
+
+
 
     @Override
     public void initialize(URL location, ResourceBundle resourceBundle) {
@@ -45,6 +53,12 @@ public class SalonListController implements Initializable {
         e.printStackTrace();
     }
 
+        selectBtn.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                DataBaseUtil.changeScene(event, "/login.fxml",accountListView.getSelectionModel().getSelectedItem(),null);
+            }
+        });
 
         File listFile = new File("docs/comb.png");
         Image listImage = new Image(listFile.toURI().toString());
