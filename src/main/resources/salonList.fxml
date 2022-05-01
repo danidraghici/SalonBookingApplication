@@ -28,5 +28,13 @@
             <DropShadow />
          </effect>
       </ListView>
+      <Button fx:id="selectBtn" alignment="CENTER" layoutX="276.0" layoutY="355.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="70.0" style="-fx-background-color: transparent; -fx-cursor: hand;" text="Select" textFill="#480cb7">
+         <font>
+            <Font name="Georgia" size="14.0" />
+         </font>
+         <effect>
+            <DropShadow />
+         </effect>
+      </Button>
    </children>
 </Pane>
