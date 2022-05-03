@@ -187,7 +187,7 @@ public class DataBaseUtil {
 
         try {
             connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/salonbooking", "root", "Eusuntlapol1");
-            preparedStatement = connection.prepareStatement("SELECT password FROM loggedinusers WHERE username = ?");
+            preparedStatement = connection.prepareStatement("SELECT password, role, name FROM loggedinusers WHERE username = ?");
             preparedStatement.setString(1, username);
             resultSet = preparedStatement.executeQuery();
 
@@ -201,8 +201,18 @@ public class DataBaseUtil {
                 while (resultSet.next()) {
                     String retrievedPassword = resultSet.getString("password");
                     System.out.println(retrievedPassword);
-                    if (retrievedPassword.equals(password))
-                        changeScene(event, "/salonList.fxml", "Choose the Salon!", null);
+                    if (retrievedPassword.equals(password)) {
+                        String retrievedRole = resultSet.getString("role");
+                        System.out.println(retrievedRole);
+                        if (retrievedRole.equalsIgnoreCase("admin")) {
+                            String retrievedNameSalon = resultSet.getString("name");
+                            System.out.println(retrievedNameSalon);
+                            changeScene(event, "/Salon.fxml", retrievedNameSalon, null);
+                        }
+                        else if (retrievedRole.equalsIgnoreCase("client"))
+                            changeScene(event, "/salonList.fxml", "Choose the Salon!", null);
+
+                    }
                     else {
                         Alert alert = new Alert(Alert.AlertType.ERROR);
                         alert.setContentText("Incorrect password");
