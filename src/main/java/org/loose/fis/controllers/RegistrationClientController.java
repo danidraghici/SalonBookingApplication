@@ -13,6 +13,8 @@ import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import static org.loose.fis.DataBaseUtil.encodePassword;
+
 public class RegistrationClientController implements Initializable {
 
     @FXML
@@ -49,7 +51,7 @@ public class RegistrationClientController implements Initializable {
             public void handle(ActionEvent event) {
 
                 if(!client_name_registration.getText().trim().isEmpty() && !client_username_registration.getText().trim().isEmpty() && !client_phone_registration.getText().trim().isEmpty() && !client_password_registration.getText().trim().isEmpty())
-                    DataBaseUtil.RegisterClient(event,client_username_registration.getText(), client_username_registration.getText(), client_name_registration.getText(), client_phone_registration.getText(), clientcheck.getText());
+                    DataBaseUtil.RegisterClient(event,client_username_registration.getText(), encodePassword(client_username_registration.getText(),client_password_registration.getText()), client_name_registration.getText(), client_phone_registration.getText(), clientcheck.getText());
                 else
                 {
                     Alert alert = new Alert(Alert.AlertType.ERROR);

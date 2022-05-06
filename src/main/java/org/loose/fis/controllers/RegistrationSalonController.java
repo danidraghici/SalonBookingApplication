@@ -17,6 +17,8 @@ import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import static org.loose.fis.DataBaseUtil.encodePassword;
+
 public class RegistrationSalonController implements Initializable {
 
     @FXML
@@ -51,7 +53,7 @@ public class RegistrationSalonController implements Initializable {
             @Override
             public void handle(ActionEvent event) {
                 if(!salon_name_registration.getText().trim().isEmpty() && !salon_username_registration.getText().trim().isEmpty() && !salon_phone_registration.getText().trim().isEmpty() && !salon_adress_registration.getText().trim().isEmpty() && !salon_password_registration.getText().isEmpty())
-                    DataBaseUtil.RegisterSalon(event,salon_username_registration.getText(),salon_password_registration.getText(), salon_name_registration.getText(), salon_phone_registration.getText(), admincheck.getText(),salon_adress_registration.getText());
+                    DataBaseUtil.RegisterSalon(event,salon_username_registration.getText(),encodePassword(salon_username_registration.getText(),salon_password_registration.getText()), salon_name_registration.getText(), salon_phone_registration.getText(), admincheck.getText(),salon_adress_registration.getText());
 
                 else
                 {

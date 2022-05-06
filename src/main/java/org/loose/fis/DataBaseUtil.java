@@ -10,6 +10,9 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.sql.*;
 
 import java.sql.Connection;
@@ -54,7 +57,7 @@ public class DataBaseUtil {
         ResultSet resultSet = null;
 
         try {
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/salonbooking", "root", "Eusuntlapol1");
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/salonbooking", "root", "rootpassword");
             psCheckUserExist = connection.prepareStatement("SELECT * FROM loggedinusers WHERE username = ?");
             psCheckUserExist.setString(1, username);
             resultSet = psCheckUserExist.executeQuery();
@@ -121,7 +124,7 @@ public class DataBaseUtil {
         ResultSet resultSet = null;
 
         try {
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/salonbooking", "root", "Eusuntlapol1");
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/salonbooking", "root", "rootpassword");
             psCheckUserExist = connection.prepareStatement("SELECT * FROM loggedinusers WHERE username = ?");
             psCheckUserExist.setString(1, username);
             resultSet = psCheckUserExist.executeQuery();
@@ -186,7 +189,7 @@ public class DataBaseUtil {
         ResultSet resultSet = null;
 
         try {
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/salonbooking", "root", "Eusuntlapol1");
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/salonbooking", "root", "rootpassword");
             preparedStatement = connection.prepareStatement("SELECT password, role, name FROM loggedinusers WHERE username = ?");
             preparedStatement.setString(1, username);
             resultSet = preparedStatement.executeQuery();
@@ -201,7 +204,7 @@ public class DataBaseUtil {
                 while (resultSet.next()) {
                     String retrievedPassword = resultSet.getString("password");
                     System.out.println(retrievedPassword);
-                    if (retrievedPassword.equals(password)) {
+                    if (retrievedPassword.equals(encodePassword(username,password))) {
                         String retrievedRole = resultSet.getString("role");
                         System.out.println(retrievedRole);
                         if (retrievedRole.equalsIgnoreCase("admin")) {
@@ -249,5 +252,23 @@ public class DataBaseUtil {
             }
         }
     }
-}
 
+    public static String encodePassword(String salt, String password) {
+        MessageDigest md = getMessageDigest();
+        md.update(salt.getBytes(StandardCharsets.UTF_8));
+        byte[] hashedPassword = md.digest(password.getBytes(StandardCharsets.UTF_8));
+        // This is the way a password should be encoded when checking the credentials
+        return new String(hashedPassword, StandardCharsets.UTF_8)
+                .replace("\"", ""); //to be able to save in JSON format
+    }
+
+    private static MessageDigest getMessageDigest() {
+        MessageDigest md;
+        try {
+            md = MessageDigest.getInstance("SHA-512");
+        } catch (NoSuchAlgorithmException e) {
+            throw new IllegalStateException("SHA-512 does not exist!");
+        }
+        return md;
+    }
+}
