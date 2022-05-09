@@ -10,7 +10,7 @@
    <children>
       <ImageView fx:id="comb" fitHeight="76.0" fitWidth="100.0" layoutX="79.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../docs/comb.png" />
+            <Image url="@docs/comb.png" />
          </image>
          <effect>
             <DropShadow />

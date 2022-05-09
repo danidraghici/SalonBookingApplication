@@ -56,11 +56,11 @@ public class SalonListController implements Initializable {
         selectBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                DataBaseUtil.changeScene(event, "/login.fxml",accountListView.getSelectionModel().getSelectedItem(),null);
+                DataBaseUtil.changeScene(event, "/Salon.fxml",accountListView.getSelectionModel().getSelectedItem(),null);
             }
         });
 
-        File listFile = new File("docs/comb.png");
+        File listFile = new File("src/main/resources/docs/comb.png");
         Image listImage = new Image(listFile.toURI().toString());
         comb.setImage(listImage);
     }
