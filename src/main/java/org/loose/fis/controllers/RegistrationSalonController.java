@@ -6,13 +6,12 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import org.loose.fis.DataBaseUtil;
 
-import java.awt.*;
+
 import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -71,11 +70,11 @@ public class RegistrationSalonController implements Initializable {
             }
         });
 
-        File salonFile = new File("docs/salon.jpg");
+        File salonFile = new File("src/main/resources/docs/salon.jpg");
         javafx.scene.image.Image salonImage = new javafx.scene.image.Image(salonFile.toURI().toString());
         salon.setImage(salonImage);
 
-        File webFile = new File("docs/web.png");
+        File webFile = new File("src/main/resources/docs/web.png");
         javafx.scene.image.Image webImage = new Image(webFile.toURI().toString());
         web.setImage(webImage);
     }

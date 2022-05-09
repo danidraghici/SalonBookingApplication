@@ -56,23 +56,23 @@ public class loginController implements Initializable {
 
 
 
-        File salonFile = new File("docs/salon.jpg");
+        File salonFile = new File("src/main/resources/docs/salon.jpg");
         Image salonImage = new Image(salonFile.toURI().toString());
         salonPhoto.setImage(salonImage);
 
-        File loginFile = new File("docs/unlock.png");
+        File loginFile = new File("src/main/resources/docs/unlock.png");
         Image loginImage = new Image(loginFile.toURI().toString());
         loginPhoto.setImage(loginImage);
 
-        File usernameFile = new File("docs/user.png");
+        File usernameFile = new File("src/main/resources/docs/user.png");
         Image usernameImage = new Image(usernameFile.toURI().toString());
         usernamePhoto.setImage(usernameImage);
 
-        File passwordFile = new File("docs/password.png");
+        File passwordFile = new File("src/main/resources/docs/password.png");
         Image passwordImage = new Image(passwordFile.toURI().toString());
         passwordPhoto.setImage(passwordImage);
 
-        File accountFile = new File("docs/hairdressing.png");
+        File accountFile = new File("src/main/resources/docs/hairdressing.png");
         Image accountImage = new Image(accountFile.toURI().toString());
         accountPhoto.setImage(accountImage);
 

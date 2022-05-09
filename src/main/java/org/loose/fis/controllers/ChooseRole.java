@@ -41,11 +41,11 @@ public class ChooseRole implements Initializable {
             }
         });
 
-        File salonFile = new File("docs/client.png");
+        File salonFile = new File("src/main/resources/docs/usern.png");
         Image salonImage = new Image(salonFile.toURI().toString());
         ClientView.setImage(salonImage);
 
-        File loginFile = new File("docs/hair-salon.png");
+        File loginFile = new File("src/main/resources/docs/hair-salon.png");
         Image loginImage = new Image(loginFile.toURI().toString());
         SalonView.setImage(loginImage);
     }

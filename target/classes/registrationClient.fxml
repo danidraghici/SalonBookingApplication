@@ -17,7 +17,7 @@
             <children>
                 <ImageView fx:id="salon" fitHeight="200.0" fitWidth="301.0" layoutY="114.0" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@../../../docs/salon.jpg" />
+                        <Image url="@docs/salon.jpg" />
                     </image></ImageView>
             </children>
         </AnchorPane>
@@ -25,7 +25,7 @@
             <children>
                 <ImageView fx:id="web" fitHeight="51.0" fitWidth="53.0" layoutX="166.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@../../../docs/web.png" />
+                        <Image url="@docs/web.png" />
                     </image></ImageView>
                 <TextField fx:id="client_name_registration" layoutX="193.0" layoutY="127.0" promptText="Name" />
                 <TextField fx:id="client_username_registration" layoutX="193.0" layoutY="167.0" promptText="UserName" />

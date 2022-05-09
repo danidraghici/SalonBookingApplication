@@ -68,11 +68,11 @@ public class RegistrationClientController implements Initializable {
             }
         });
 
-        File salonFile = new File("docs/salon.jpg");
+        File salonFile = new File("src/main/resources/docs/salon.jpg");
         Image salonImage = new Image(salonFile.toURI().toString());
         salon.setImage(salonImage);
 
-        File webFile = new File("docs/web.png");
+        File webFile = new File("src/main/resources/docs/web.png");
         Image webImage = new Image(webFile.toURI().toString());
         web.setImage(webImage);
     }
