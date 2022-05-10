@@ -21,12 +21,12 @@ import org.loose.fis.model.service;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+
+import static org.loose.fis.DataBaseUtil.changeScene;
 
 
 public class addServiceController implements Initializable {
@@ -136,7 +136,26 @@ public class addServiceController implements Initializable {
         add.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                DataBaseUtil.changeScene(event, "/add.fxml", "Pleace Complete!", null);
+                changeScene(event, "/add.fxml", "Please Complete!", null);
+            }
+        });
+
+        delete.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                ConnectionDB connectNow = new ConnectionDB();
+                Connection connectionDB = connectNow.getDBConnection();
+                PreparedStatement psInsert = null;
+
+                try {
+                    psInsert = connectionDB.prepareStatement("DELETE FROM  salonservices WHERE name = ?");
+                    psInsert.setString(1, serviceName.getText());
+                    psInsert.executeUpdate();
+
+                    changeScene(event, "/addService.fxml", "Salon", null);
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
             }
         });
 

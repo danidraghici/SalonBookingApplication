@@ -1,6 +1,7 @@
 org\loose\fis\controllers\addControllers$1.class
 org\loose\fis\controllers\ChooseRole$2.class
 org\loose\fis\MyListener.class
+org\loose\fis\controllers\addServiceController$3.class
 org\loose\fis\controllers\addServiceController.class
 org\loose\fis\controllers\ConnectionDB.class
 org\loose\fis\controllers\RegistrationSalonController$1.class
