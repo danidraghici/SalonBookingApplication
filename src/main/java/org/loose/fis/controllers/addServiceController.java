@@ -131,24 +131,12 @@ public class addServiceController implements Initializable {
 
         }
 
-        delete.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
 
-            }
-        });
-
-        edit.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-
-            }
-        });
 
         add.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-
+                DataBaseUtil.changeScene(event, "/add.fxml", "Pleace Complete!", null);
             }
         });
 
