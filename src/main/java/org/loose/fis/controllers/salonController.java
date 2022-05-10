@@ -18,6 +18,9 @@ import org.loose.fis.model.service;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -44,8 +47,34 @@ public class salonController implements Initializable {
         List<service> services = new ArrayList<>();
         service serv;
 
+        ConnectionDB connectNow = new ConnectionDB();
+        Connection connectionDB = connectNow.getDBConnection();
 
-            serv = new service();
+        try{
+
+            Statement statement = connectionDB.createStatement();
+            ResultSet queryOutput = statement.executeQuery("select Name, Price, Path from salonservices");
+
+
+            while(queryOutput.next()){
+
+                String name = queryOutput.getString("Name");
+                String price = queryOutput.getString("Price");
+                String path = queryOutput.getString("Path");
+
+                double d = Double.parseDouble(price);
+
+                serv = new service();
+                serv.setName(name);
+                serv.setPrice(d);
+                serv.setImgSrc(path);
+                services.add(serv);
+
+            }
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
+           /* serv = new service();
             serv.setName("HairColoring");
             serv.setPrice(89.99);
             serv.setImgSrc("/docs/coloring.png");
@@ -85,7 +114,7 @@ public class salonController implements Initializable {
              serv.setName("Spa");
              serv.setPrice(22.13);
              serv.setImgSrc("/docs/spa.png");
-             services.add(serv);
+             services.add(serv);*/
 
         return services;
     }

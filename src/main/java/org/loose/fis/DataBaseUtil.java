@@ -57,7 +57,7 @@ public class DataBaseUtil {
         ResultSet resultSet = null;
 
         try {
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/salonbooking", "root", "rootpassword");
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/salonbooking", "root", "Eusuntlapol1");
             psCheckUserExist = connection.prepareStatement("SELECT * FROM loggedinusers WHERE username = ?");
             psCheckUserExist.setString(1, username);
             resultSet = psCheckUserExist.executeQuery();
@@ -124,7 +124,7 @@ public class DataBaseUtil {
         ResultSet resultSet = null;
 
         try {
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/salonbooking", "root", "rootpassword");
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/salonbooking", "root", "Eusuntlapol1");
             psCheckUserExist = connection.prepareStatement("SELECT * FROM loggedinusers WHERE username = ?");
             psCheckUserExist.setString(1, username);
             resultSet = psCheckUserExist.executeQuery();
@@ -189,7 +189,7 @@ public class DataBaseUtil {
         ResultSet resultSet = null;
 
         try {
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/salonbooking", "root", "rootpassword");
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/salonbooking", "root", "Eusuntlapol1");
             preparedStatement = connection.prepareStatement("SELECT password, role, name FROM loggedinusers WHERE username = ?");
             preparedStatement.setString(1, username);
             resultSet = preparedStatement.executeQuery();
@@ -210,7 +210,7 @@ public class DataBaseUtil {
                         if (retrievedRole.equalsIgnoreCase("admin")) {
                             String retrievedNameSalon = resultSet.getString("name");
                             System.out.println(retrievedNameSalon);
-                            changeScene(event, "/Salon.fxml", retrievedNameSalon, null);
+                            changeScene(event, "/addService.fxml", retrievedNameSalon, null);
                         }
                         else if (retrievedRole.equalsIgnoreCase("client"))
                             changeScene(event, "/salonList.fxml", "Choose the Salon!", null);
