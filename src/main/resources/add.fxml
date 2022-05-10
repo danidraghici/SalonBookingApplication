@@ -11,24 +11,16 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #E3D3DE;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.loose.fis.controllers.addControllers">
    <children>
-      <Label layoutX="253.0" layoutY="112.0" prefHeight="17.0" prefWidth="78.0" text="Name" textFill="#480cb7">
+      <Label layoutX="292.0" layoutY="118.0" prefHeight="17.0" prefWidth="78.0" text="Name" textFill="#480cb7">
          <font>
             <Font name="Georgia" size="18.0" />
          </font></Label>
-      <Label layoutX="253.0" layoutY="161.0" text="Price" textFill="#480cb7">
+      <Label layoutX="301.0" layoutY="222.0" text="Price" textFill="#480cb7">
          <font>
             <Font name="Georgia" size="18.0" />
          </font></Label>
-      <Label layoutX="254.0" layoutY="202.0" prefHeight="21.0" prefWidth="57.0" text="Path" textFill="#480cb7">
-         <font>
-            <Font name="Georgia" size="18.0" />
-         </font></Label>
-      <Label fx:id="path" layoutX="360.0" layoutY="202.0" prefHeight="17.0" prefWidth="135.0" text="/docs/new.png" textFill="#480cb7">
-         <font>
-            <Font name="Georgia" size="16.0" />
-         </font></Label>
-      <TextField fx:id="name" layoutX="360.0" layoutY="108.0" promptText="Please enthe the name" />
-      <TextField fx:id="price" layoutX="360.0" layoutY="157.0" promptText="Please enter the price" />
+      <TextField fx:id="name" layoutX="360.0" layoutY="110.0" prefHeight="37.0" prefWidth="204.0" promptText="Please enthe the name" />
+      <TextField fx:id="price" layoutX="360.0" layoutY="214.0" prefHeight="37.0" prefWidth="204.0" promptText="Please enter the price" />
       <AnchorPane prefHeight="400.0" prefWidth="179.0" style="-fx-background-color: #FCF1F5;">
          <children>
             <ImageView fx:id="photo" fitHeight="183.0" fitWidth="334.0" layoutY="125.0" pickOnBounds="true" preserveRatio="true">
@@ -37,10 +29,20 @@
                </image>
             </ImageView>
          </children></AnchorPane>
-      <Button fx:id="add" layoutX="349.0" layoutY="288.0" mnemonicParsing="false" style="-fx-background-color: transparent; -fx-cursor: hand;" text="Add" textFill="#480cb7">
+      <Button fx:id="add" layoutX="437.0" layoutY="304.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="64.0" style="-fx-background-color: transparent; -fx-cursor: hand;" text="Add" textFill="#480cb7">
          <font>
             <Font name="Georgia" size="16.0" />
          </font>
       </Button>
+      <ImageView fitHeight="53.0" fitWidth="64.0" layoutX="209.0" layoutY="106.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@docs/service.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="53.0" fitWidth="53.0" layoutX="209.0" layoutY="210.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@docs/money.png" />
+         </image>
+      </ImageView>
    </children>
 </Pane>

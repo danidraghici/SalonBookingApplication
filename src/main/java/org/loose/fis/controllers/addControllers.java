@@ -98,7 +98,7 @@ public class addControllers implements Initializable {
             public void handle(ActionEvent event) {
 
                 if(!name.getText().trim().isEmpty() && !price.getText().trim().isEmpty())
-                    addService(event,name.getText(),price.getText(),path.getText());
+                    addService(event,name.getText(),price.getText(),"/docs/new.png");
                 else
                 {
                     Alert alert = new Alert(Alert.AlertType.ERROR);
