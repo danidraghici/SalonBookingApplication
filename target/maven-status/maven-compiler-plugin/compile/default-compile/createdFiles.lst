@@ -1,5 +1,6 @@
 org\loose\fis\controllers\ChooseRole$2.class
 org\loose\fis\MyListener.class
+org\loose\fis\controllers\addServiceController.class
 org\loose\fis\controllers\ConnectionDB.class
 org\loose\fis\controllers\RegistrationSalonController$1.class
 org\loose\fis\controllers\SalonListController$1.class
@@ -7,6 +8,7 @@ org\loose\fis\controllers\RegistrationClientController$2.class
 org\loose\fis\model\service.class
 org\loose\fis\controllers\loginController$2.class
 org\loose\fis\controllers\salonController$1.class
+org\loose\fis\controllers\addServiceController$1.class
 org\loose\fis\DataBaseUtil.class
 org\loose\fis\controllers\salonController.class
 org\loose\fis\controllers\loginController$1.class
