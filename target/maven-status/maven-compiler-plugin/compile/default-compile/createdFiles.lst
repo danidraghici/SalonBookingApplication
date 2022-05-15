@@ -17,10 +17,12 @@ org\loose\fis\DataBaseUtil.class
 org\loose\fis\controllers\salonController.class
 org\loose\fis\controllers\loginController$1.class
 org\loose\fis\controllers\addControllers.class
+org\loose\fis\controllers\salonController$2.class
 org\loose\fis\controllers\editServiceController.class
 org\loose\fis\controllers\RegistrationClientController$1.class
 org\loose\fis\controllers\RegistrationSalonController$2.class
 org\loose\fis\controllers\ChooseRole$1.class
+org\loose\fis\controllers\salonController$2$1.class
 org\loose\fis\controllers\SalonListController.class
 org\loose\fis\controllers\servicesListController.class
 org\loose\fis\controllers\addServiceController$2.class

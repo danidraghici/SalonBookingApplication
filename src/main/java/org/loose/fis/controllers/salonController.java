@@ -1,16 +1,18 @@
 package org.loose.fis.controllers;
 
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
-import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
+import javafx.stage.Stage;
+import javafx.util.Callback;
 import org.loose.fis.Main;
 import org.loose.fis.MyListener;
 import org.loose.fis.model.service;
@@ -18,12 +20,15 @@ import org.loose.fis.model.service;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import java.sql.*;
+import java.time.DayOfWeek;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+
+import static javafx.application.Application.launch;
+import static org.loose.fis.DataBaseUtil.changeScene;
 
 public class salonController implements Initializable {
     @FXML
@@ -38,7 +43,14 @@ public class salonController implements Initializable {
     private ScrollPane scroll;
     @FXML
     private GridPane grid;
+    @FXML
+    private DatePicker calendar;
+    @FXML
+    private Button confirmButton;
+    @FXML
+    private ChoiceBox hourSelect;
 
+    private String client, salon;
     private List<service> services = new ArrayList<>();
     private Image image;
     private MyListener myListener;
@@ -54,7 +66,6 @@ public class salonController implements Initializable {
 
             Statement statement = connectionDB.createStatement();
             ResultSet queryOutput = statement.executeQuery("select Name, Price, Path from salonservices");
-
 
             while(queryOutput.next()){
 
@@ -74,48 +85,6 @@ public class salonController implements Initializable {
         }catch (Exception e) {
             e.printStackTrace();
         }
-           /* serv = new service();
-            serv.setName("HairColoring");
-            serv.setPrice(89.99);
-            serv.setImgSrc("/docs/coloring.png");
-            services.add(serv);
-
-             serv = new service();
-             serv.setName("HairCutting");
-             serv.setPrice(9.99);
-             serv.setImgSrc("/docs/haircut.png");
-             services.add(serv);
-
-             serv = new service();
-             serv.setName("Manicure");
-             serv.setPrice(19.99);
-             serv.setImgSrc("/docs/manicure.png");
-             services.add(serv);
-
-             serv = new service();
-             serv.setName("Pedicure");
-             serv.setPrice(21.99);
-             serv.setImgSrc("/docs/pedicure.png");
-             services.add(serv);
-
-             serv = new service();
-             serv.setName("MakeUp");
-             serv.setPrice(30.99);
-             serv.setImgSrc("/docs/makeover.png");
-             services.add(serv);
-
-             serv = new service();
-             serv.setName("Barber");
-             serv.setPrice(7.99);
-             serv.setImgSrc("/docs/barber.png");
-             services.add(serv);
-
-             serv = new service();
-             serv.setName("Spa");
-             serv.setPrice(22.13);
-             serv.setImgSrc("/docs/spa.png");
-             services.add(serv);*/
-
         return services;
     }
 
@@ -125,47 +94,76 @@ public class salonController implements Initializable {
         image = new Image(getClass().getResourceAsStream(serv.getImgSrc()));
         img.setImage(image);
     }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
 
-            services.addAll(getData());
+        for(int i = 10; i < 18; i ++) {
+            hourSelect.getItems().add(i + ":00");
+        }
+
+        services.addAll(getData());
 
         if(services.size()>0)
         {
-                setChosenService(services.get(0));
-                myListener = new MyListener() {
-                    @Override
-                    public void onClickListener(service serv) {
-                        setChosenService(serv);
-                    }
-                };
+            setChosenService(services.get(0));
+            myListener = new MyListener() {
+                @Override
+                public void onClickListener(service serv) {
+                    setChosenService(serv);
+                }
+            };
         }
         int column = 0;
         int row = 0;
 
         try {
-        for(int i = 0; i<services.size(); i++) {
-            FXMLLoader fxmlLoader = new FXMLLoader();
-            fxmlLoader.setLocation(getClass().getResource("/servicesList.fxml"));
-            AnchorPane anchorPane = fxmlLoader.load();
+            for(int i = 0; i<services.size(); i++) {
+                FXMLLoader fxmlLoader = new FXMLLoader();
+                fxmlLoader.setLocation(getClass().getResource("/servicesList.fxml"));
+                AnchorPane anchorPane = fxmlLoader.load();
 
-            servicesListController servicesController = fxmlLoader.getController();
-            servicesController.setData(services.get(i), myListener);
+                servicesListController servicesController = fxmlLoader.getController();
+                servicesController.setData(services.get(i), myListener);
 
-            if(column == 1) {
-                column = 0;
-                row++;
+                if(column == 1) {
+                    column = 0;
+                    row++;
+                }
+
+                grid.add(anchorPane, column++, row);
+                GridPane.setMargin(anchorPane, new Insets(10));
             }
-
-            grid.add(anchorPane, column++, row);
-            GridPane.setMargin(anchorPane, new Insets(10));
-        }
         } catch (IOException e) {
-                e.printStackTrace();
+            e.printStackTrace();
 
         }
 
+
+        final Callback<DatePicker, DateCell> dayCellFactory = new Callback<DatePicker, DateCell>() {
+            @Override
+            public DateCell call(final DatePicker datePicker) {
+                return new DateCell() {
+                    @Override
+                    public void updateItem(LocalDate item, boolean empty)
+                    {
+                        super.updateItem(item, empty);
+                        LocalDate date= calendar.getValue();
+                        LocalDate today = LocalDate.now();
+
+                        setDisable(empty || item.compareTo(today) < 0 || item.getDayOfWeek() == DayOfWeek.SUNDAY);
+
+                        if(item.equals(date))
+                        {
+                            setDisable(true);
+                            setStyle("-fx-background-color: #F5BAD6;");
+                        }
+                    }
+                };
+            }
+        };
+        calendar.setDayCellFactory(dayCellFactory);
 
         File calendar1File = new File("src/main/resources/docs/calendar-date.png");
         Image calendar1Image = new Image(calendar1File.toURI().toString());
@@ -175,5 +173,6 @@ public class salonController implements Initializable {
         Image calendar2Image = new Image(calendar2File.toURI().toString());
         calendar2.setImage(calendar2Image);
     }
+
 }
 
