@@ -7,6 +7,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.stage.Stage;
+import org.loose.fis.controllers.SalonListController;
 
 import java.io.IOException;
 
@@ -21,6 +22,11 @@ import java.sql.DriverManager;
 
 
 public class DataBaseUtil {
+
+
+    private static Stage stage;
+    private static Scene scene;
+    private static Parent root;
 
     public static void changeScene(ActionEvent event, String fxmlFile, String title, String username) {
         Parent root = null;
@@ -209,8 +215,24 @@ public class DataBaseUtil {
                             String retrievedNameSalon = resultSet.getString("name");
                             changeScene(event, "/addService.fxml", retrievedNameSalon, null);
                         }
-                        else if (retrievedRole.equalsIgnoreCase("client"))
-                            changeScene(event, "/salonList.fxml", "Choose the Salon!", null);
+                        else if (retrievedRole.equalsIgnoreCase("client")) {
+                            FXMLLoader loader = new FXMLLoader();
+                            loader.setLocation(DataBaseUtil.class.getResource("/salonList.fxml"));
+                            try {
+                                root=loader.load();
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+
+                            SalonListController salonListController = loader.getController();
+                            salonListController.setClientUsername(username);
+
+                            stage =(Stage)((Node)event.getSource()).getScene().getWindow();
+                            scene = new Scene(root);
+                            stage.setScene(scene);
+                            stage.setTitle("Choose Salon!");
+                            stage.show();
+                        }
 
                     }
                     else {

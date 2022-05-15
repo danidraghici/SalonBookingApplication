@@ -5,6 +5,7 @@ org\loose\fis\MyListener.class
 org\loose\fis\controllers\addServiceController$3.class
 org\loose\fis\controllers\addServiceController.class
 org\loose\fis\controllers\ConnectionDB.class
+org\loose\fis\controllers\salonController$3.class
 org\loose\fis\controllers\RegistrationSalonController$1.class
 org\loose\fis\controllers\SalonListController$1.class
 org\loose\fis\controllers\addServiceController$4.class

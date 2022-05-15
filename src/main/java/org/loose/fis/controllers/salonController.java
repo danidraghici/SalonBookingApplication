@@ -165,6 +165,31 @@ public class salonController implements Initializable {
         };
         calendar.setDayCellFactory(dayCellFactory);
 
+        confirmButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                ConnectionDB connectNow = new ConnectionDB();
+                Connection connectionDB = connectNow.getDBConnection();
+                PreparedStatement psInsert = null;
+
+                try {
+                    psInsert = connectionDB.prepareStatement("INSERT INTO appointments (salonName,serviceName,clientName,date,hour)  VALUES (?,?,?,?,?)");
+                    psInsert.setString(1, salon);
+                    psInsert.setString(2, serviceName.getText());
+                    psInsert.setString(3, client);
+                    psInsert.setString(4, String.valueOf(calendar.getValue()));
+                    psInsert.setString(5, String.valueOf(hourSelect.getSelectionModel().getSelectedItem()));
+                    psInsert.executeUpdate();
+
+                } catch (
+                        SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+
+
         File calendar1File = new File("src/main/resources/docs/calendar-date.png");
         Image calendar1Image = new Image(calendar1File.toURI().toString());
         calendar1.setImage(calendar1Image);
@@ -174,5 +199,11 @@ public class salonController implements Initializable {
         calendar2.setImage(calendar2Image);
     }
 
+    public void setSalonName(String salonName) {
+        salon = salonName;
+    }
+    public void setClient(String username) {
+        client = username;
+    }
 }
 
