@@ -91,13 +91,18 @@
                         </HBox>
                         <HBox alignment="CENTER" prefHeight="87.0" prefWidth="238.0">
                            <children>
+
                               <DatePicker fx:id="calendar" style="-fx-cursor: hand;" />
                               <ChoiceBox fx:id="hourSelect" prefWidth="150.0" />
+
                            </children>
                         </HBox>
                         <HBox alignment="CENTER" prefHeight="37.0" prefWidth="238.0">
                            <children>
+
                               <Button fx:id="confirmButton" mnemonicParsing="false" style="-fx-background-color: transparent; -fx-cursor: hand; -fx-border-radius: 30;" text="Confirm" textFill="#480db5">
+
+
                                  <font>
                                     <Font name="Georgia" size="14.0" />
                                  </font>
@@ -123,12 +128,13 @@
                         <Insets left="20.0" right="20.0" />
                      </VBox.margin>
                      <children>
-                        <Button fx:id="appointmentsButton" mnemonicParsing="false" prefHeight="55.0" prefWidth="134.0" text="       My Appointments" />
-                        <Label alignment="CENTER" prefHeight="64.0" prefWidth="46.0" textFill="#5e5555">
+
+                        <Button fx:id="appointments" mnemonicParsing="false" prefHeight="70.0" prefWidth="220.0" style="-fx-background-color: transparent; -fx-cursor: hand;" text="MyAppointments">
+s
                            <font>
-                              <Font name="Georgia Italic" size="16.0" />
+                              <Font name="Georgia Italic" size="20.0" />
                            </font>
-                        </Label>
+                        </Button>
                         <ImageView fx:id="calendar1" fitHeight="64.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@docs/calendar-date.png" />

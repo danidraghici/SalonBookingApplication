@@ -6,6 +6,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
+
+import javafx.scene.Node;
+import javafx.scene.Parent;
+
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
@@ -48,9 +52,15 @@ public class salonController implements Initializable {
     @FXML
     private Button confirmButton;
     @FXML
+    private Button appointments;
+    @FXML
     private ChoiceBox hourSelect;
 
-    private String client, salon;
+    String client, salon;
+    private Stage stage;
+    private Scene scene;
+    private Parent root;
+
     private List<service> services = new ArrayList<>();
     private Image image;
     private MyListener myListener;
@@ -100,10 +110,12 @@ public class salonController implements Initializable {
 
 
         for(int i = 10; i < 18; i ++) {
+
             hourSelect.getItems().add(i + ":00");
         }
 
         services.addAll(getData());
+
 
         if(services.size()>0)
         {
@@ -140,20 +152,97 @@ public class salonController implements Initializable {
 
         }
 
+        confirmButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                LocalDate value = calendar.getValue();
+                ConnectionDB connectNow = new ConnectionDB();
+                Connection connectionDB = connectNow.getDBConnection();
+                PreparedStatement psInsert = null;
 
+                /*ry{
+            Statement statement = connection.createStatement();
+            ResultSet queryOutput = statement.executeQuery("SELECT * FROM appointments");
+
+            boolean ok = true;
+
+            while (queryOutput.next() && ok == true) {
+                String retrievedSalon = queryOutput.getString("salonName");
+                String retrievedService = queryOutput.getString("serviceName");
+                String retrievedDate= queryOutput.getString("date");
+                String retrievedHour = queryOutput.getString("hour");
+
+                System.out.println(retrievedSalon);
+                System.out.println(salon);
+
+                if(retrievedSalon.equals(salon) && retrievedService.equals(serviciuF.getText()) &&
+                        retrievedDate.equals(String.valueOf(dateF.getValue())) && retrievedHour.equals(String.valueOf(oraF.getValue()))) ok = false;
+
+            }
+
+            if(ok)*/
+
+                try {
+                    Statement statement = connectionDB.createStatement();
+                    ResultSet queryOutput = statement.executeQuery("SELECT * FROM appointments");
+
+                    boolean ok = true;
+
+                    while (queryOutput.next() && ok == true) {
+                        String retrievedSalon = queryOutput.getString("salonName");
+                        String retrievedService = queryOutput.getString("serviceName");
+                        String retrievedDate = queryOutput.getString("date");
+                        String retrievedHour = queryOutput.getString("hour");
+
+                        System.out.println(retrievedSalon);
+                        System.out.println(salon);
+
+                        if (retrievedSalon.equals(salon) && retrievedService.equals(serviceName.getText()) &&
+                                retrievedDate.equals(String.valueOf(calendar.getValue())) && retrievedHour.equals(String.valueOf(hourSelect.getValue())))
+                            ok = false;
+                    }
+                    if(ok) {
+                        psInsert = connectionDB.prepareStatement("INSERT INTO appointments (salonName,serviceName,clientName, date,hour)  VALUES (?,?,?,?,?)");
+                        psInsert.setString(1, salon);
+                        psInsert.setString(2, serviceName.getText());
+                        psInsert.setString(3, client);
+                        psInsert.setString(4, String.valueOf(calendar.getValue()));
+                        psInsert.setString(5, String.valueOf(hourSelect.getSelectionModel().getSelectedItem()));
+                        psInsert.executeUpdate();
+                    }
+                    else
+                    {
+                        Alert alert = new Alert(Alert.AlertType.ERROR);
+                        alert.setContentText("The Date is not available, please select anotherone!");
+                        alert.show();
+                    }
+
+                } catch (
+                        SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            });
         final Callback<DatePicker, DateCell> dayCellFactory = new Callback<DatePicker, DateCell>() {
             @Override
             public DateCell call(final DatePicker datePicker) {
                 return new DateCell() {
                     @Override
-                    public void updateItem(LocalDate item, boolean empty)
-                    {
+                    public void updateItem(LocalDate item, boolean empty) {
                         super.updateItem(item, empty);
                         LocalDate date= calendar.getValue();
                         LocalDate today = LocalDate.now();
-
                         setDisable(empty || item.compareTo(today) < 0 || item.getDayOfWeek() == DayOfWeek.SUNDAY);
 
+                       /* if (item == null) {
+                            Alert alert = new Alert(Alert.AlertType.ERROR);
+                            alert.setContentText("Please select a date!");
+                            alert.show();
+                        }
+
+                        else
+
+                        */
                         if(item.equals(date))
                         {
                             setDisable(true);
@@ -165,30 +254,32 @@ public class salonController implements Initializable {
         };
         calendar.setDayCellFactory(dayCellFactory);
 
-        confirmButton.setOnAction(new EventHandler<ActionEvent>() {
+
+
+
+        appointments.setOnAction(new EventHandler<ActionEvent>() {
             @Override
-            public void handle(ActionEvent actionEvent) {
-                ConnectionDB connectNow = new ConnectionDB();
-                Connection connectionDB = connectNow.getDBConnection();
-                PreparedStatement psInsert = null;
-
+            public void handle(ActionEvent event) {
+                FXMLLoader loader = new FXMLLoader();
+                loader.setLocation(getClass().getResource("/appointmentsClient.fxml"));
                 try {
-                    psInsert = connectionDB.prepareStatement("INSERT INTO appointments (salonName,serviceName,clientName,date,hour)  VALUES (?,?,?,?,?)");
-                    psInsert.setString(1, salon);
-                    psInsert.setString(2, serviceName.getText());
-                    psInsert.setString(3, client);
-                    psInsert.setString(4, String.valueOf(calendar.getValue()));
-                    psInsert.setString(5, String.valueOf(hourSelect.getSelectionModel().getSelectedItem()));
-                    psInsert.executeUpdate();
-
-                } catch (
-                        SQLException e) {
+                    root = loader.load();
+                } catch (IOException e) {
                     e.printStackTrace();
                 }
+
+                TableViewClientController tableController = loader.getController();
+                tableController.setName(client);
+
+                stage =(Stage)((Node)event.getSource()).getScene().getWindow();
+                scene = new Scene(root);
+                stage.setScene(scene);
+                stage.setTitle("MyAppointments");
+                stage.show();
             }
+
+
         });
-
-
 
         File calendar1File = new File("src/main/resources/docs/calendar-date.png");
         Image calendar1Image = new Image(calendar1File.toURI().toString());
@@ -197,13 +288,15 @@ public class salonController implements Initializable {
         File calendar2File = new File("src/main/resources/docs/calendar.png");
         Image calendar2Image = new Image(calendar2File.toURI().toString());
         calendar2.setImage(calendar2Image);
+
     }
 
-    public void setSalonName(String salonName) {
-        salon = salonName;
+    public void setSalonName(String selectedItem) {
+        salon = selectedItem;
     }
-    public void setClient(String username) {
-        client = username;
+
+    public void setClient(String name) {
+        client = name;
     }
 }
 

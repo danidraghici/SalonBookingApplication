@@ -65,6 +65,7 @@ public class SalonListController implements Initializable {
         selectBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
+
                 FXMLLoader loader = new FXMLLoader();
                 loader.setLocation(getClass().getResource("/Salon.fxml"));
                 try {
@@ -76,23 +77,24 @@ public class SalonListController implements Initializable {
                 salonController salonController = loader.getController();
                 salonController.setSalonName(accountListView.getSelectionModel().getSelectedItem());
                 salonController.setClient(name);
+
                 stage =(Stage)((Node)event.getSource()).getScene().getWindow();
                 scene = new Scene(root);
                 stage.setScene(scene);
                 stage.setTitle(accountListView.getSelectionModel().getSelectedItem());
                 stage.show();
             }
+
         });
+
 
         File listFile = new File("src/main/resources/docs/comb.png");
         Image listImage = new Image(listFile.toURI().toString());
         comb.setImage(listImage);
     }
-
-    private String name;
-    public void setClientUsername(String clientName) {
-        name = clientName;
+    String name;
+    public void setUsername(String salonName) {
+        name=salonName;
     }
-
 
 }

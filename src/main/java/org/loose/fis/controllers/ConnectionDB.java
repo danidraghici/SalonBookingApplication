@@ -11,7 +11,7 @@ public class ConnectionDB {
     {
         String url = "jdbc:mysql://localhost:3306/salonbooking";
         String user = "root";
-        String password = "rootpassword";
+        String password = "Eusuntlapol1";
 
         try{
             databaseLink = DriverManager.getConnection(url, user, password);

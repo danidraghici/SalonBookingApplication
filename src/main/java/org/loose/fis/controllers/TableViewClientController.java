@@ -72,7 +72,7 @@ public class TableViewClientController implements Initializable {
                 System.out.println(retrievedClient);
                 System.out.println(numeC);
 
-                    if(retrievedClient == numeC){
+                    if(retrievedClient.equals(numeC)){
                         AppointmentsList.add(new appointmentsClient(
                                 queryOutput.getInt("idappointments"),
                                 queryOutput.getString("salonName"),

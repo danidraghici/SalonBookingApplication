@@ -9,6 +9,10 @@ import javafx.scene.control.Alert;
 import javafx.stage.Stage;
 import org.loose.fis.controllers.SalonListController;
 
+import org.loose.fis.controllers.addServiceController;
+import org.loose.fis.controllers.salonController;
+
+
 import java.io.IOException;
 
 import java.nio.charset.StandardCharsets;
@@ -63,7 +67,7 @@ public class DataBaseUtil {
         ResultSet resultSet = null;
 
         try {
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/salonbooking", "root", "rootpassword");
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/salonbooking", "root", "Eusuntlapol1");
             psCheckUserExist = connection.prepareStatement("SELECT * FROM loggedinusers WHERE username = ?");
             psCheckUserExist.setString(1, username);
             resultSet = psCheckUserExist.executeQuery();
@@ -130,7 +134,7 @@ public class DataBaseUtil {
         ResultSet resultSet = null;
 
         try {
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/salonbooking", "root", "rootpassword");
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/salonbooking", "root", "Eusuntlapol1");
             psCheckUserExist = connection.prepareStatement("SELECT * FROM loggedinusers WHERE username = ?");
             psCheckUserExist.setString(1, username);
             resultSet = psCheckUserExist.executeQuery();
@@ -195,7 +199,7 @@ public class DataBaseUtil {
         ResultSet resultSet = null;
 
         try {
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/salonbooking", "root", "rootpassword");
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/salonbooking", "root", "Eusuntlapol1");
             preparedStatement = connection.prepareStatement("SELECT password, role, name FROM loggedinusers WHERE username = ?");
             preparedStatement.setString(1, username);
             resultSet = preparedStatement.executeQuery();
@@ -209,11 +213,30 @@ public class DataBaseUtil {
             {
                 while (resultSet.next()) {
                     String retrievedPassword = resultSet.getString("password");
+                    System.out.println(retrievedPassword);
                     if (retrievedPassword.equals(encodePassword(username,password))) {
                         String retrievedRole = resultSet.getString("role");
+                        System.out.println(retrievedRole);
                         if (retrievedRole.equalsIgnoreCase("admin")) {
                             String retrievedNameSalon = resultSet.getString("name");
-                            changeScene(event, "/addService.fxml", retrievedNameSalon, null);
+                            System.out.println(retrievedNameSalon);
+                            FXMLLoader loader = new FXMLLoader();
+                            loader.setLocation(DataBaseUtil.class.getResource("/addService.fxml"));
+                            try {
+                                root = loader.load();
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+
+                            addServiceController addController = loader.getController();
+                            addController.setSalon(username);
+
+                            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                            scene = new Scene(root);
+                            stage.setScene(scene);
+                            stage.setTitle(retrievedNameSalon);
+                            stage.show();
+
                         }
                         else if (retrievedRole.equalsIgnoreCase("client")) {
                             FXMLLoader loader = new FXMLLoader();
@@ -225,7 +248,7 @@ public class DataBaseUtil {
                             }
 
                             SalonListController salonListController = loader.getController();
-                            salonListController.setClientUsername(username);
+                            salonListController.setUsername(username);
 
                             stage =(Stage)((Node)event.getSource()).getScene().getWindow();
                             scene = new Scene(root);
@@ -291,4 +314,5 @@ public class DataBaseUtil {
         return md;
     }
 }
+
 

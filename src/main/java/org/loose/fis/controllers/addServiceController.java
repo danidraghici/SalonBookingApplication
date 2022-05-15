@@ -53,6 +53,8 @@ public class addServiceController implements Initializable {
     private Scene scene;
     private Parent root;
 
+    @FXML
+    private Button appointments;
 
     private List<service> services = new ArrayList<>();
     private Image image;
@@ -189,5 +191,31 @@ public class addServiceController implements Initializable {
             }
         });
 
+        appointments.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                FXMLLoader loader = new FXMLLoader();
+                loader.setLocation(DataBaseUtil.class.getResource("/appointmentsSalon.fxml"));
+                try {
+                    root=loader.load();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+                TableViewSalonController tableController = loader.getController();
+                tableController.setSalonName(nameS);
+
+                stage =(Stage)((Node)event.getSource()).getScene().getWindow();
+                scene = new Scene(root);
+                stage.setScene(scene);
+                stage.setTitle("MyAppointments");
+                stage.show();
+            }
+        });
+
+    }
+    String nameS;
+    public void setSalon(String username) {
+        nameS = username;
     }
 }

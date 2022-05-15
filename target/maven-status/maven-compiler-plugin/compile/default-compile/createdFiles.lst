@@ -8,11 +8,8 @@ org\loose\fis\model\appointmentsSalon.class
 org\loose\fis\controllers\addServiceController.class
 org\loose\fis\controllers\ConnectionDB.class
 org\loose\fis\controllers\salonController$3.class
-<<<<<<< Updated upstream
-=======
 org\loose\fis\controllers\TableViewClientController$1.class
 org\loose\fis\controllers\addAppointmentController$1.class
->>>>>>> Stashed changes
 org\loose\fis\controllers\RegistrationSalonController$1.class
 org\loose\fis\controllers\TableViewSalonController.class
 org\loose\fis\controllers\salonController$3$1.class
@@ -30,15 +27,11 @@ org\loose\fis\controllers\salonController.class
 org\loose\fis\controllers\loginController$1.class
 org\loose\fis\controllers\addControllers.class
 org\loose\fis\controllers\salonController$2.class
-<<<<<<< Updated upstream
-=======
 org\loose\fis\controllers\TableViewClientController.class
->>>>>>> Stashed changes
 org\loose\fis\controllers\editServiceController.class
 org\loose\fis\controllers\RegistrationClientController$1.class
 org\loose\fis\controllers\RegistrationSalonController$2.class
 org\loose\fis\controllers\ChooseRole$1.class
-org\loose\fis\controllers\salonController$2$1.class
 org\loose\fis\controllers\SalonListController.class
 org\loose\fis\controllers\addAppointmentController$1$1.class
 org\loose\fis\controllers\addServiceController$5.class

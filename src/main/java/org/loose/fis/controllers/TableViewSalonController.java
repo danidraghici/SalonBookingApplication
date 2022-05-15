@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TableCell;
@@ -50,6 +51,10 @@ public class TableViewSalonController implements Initializable {
     appointmentsSalon appointment = null;
     PreparedStatement preparedStatement = null ;
 
+    private Stage stage;
+    private Scene scene;
+    private Parent root;
+
     ObservableList<appointmentsSalon> AppointmentsList = FXCollections.observableArrayList();
 
     @Override
@@ -62,16 +67,24 @@ public class TableViewSalonController implements Initializable {
 
     @FXML
     private void getAddView(MouseEvent event) {
+        FXMLLoader loader = new FXMLLoader();
+
+        loader.setLocation(getClass().getResource("/addAppointment.fxml"));
         try {
-            Parent parent = FXMLLoader.load(getClass().getResource("/addAppointment.fxml"));
-            Scene scene = new Scene(parent);
-            Stage stage = new Stage();
-            stage.setScene(scene);
-            stage.initStyle(StageStyle.UTILITY);
-            stage.show();
+            root = loader.load();
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+       addAppointmentController addController = loader.getController();
+       addController.setSalon(salonN);
+
+        Scene scene = new Scene(root);
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        stage.initStyle(StageStyle.UTILITY);
+        stage.show();
+
     }
 
     @FXML
@@ -89,12 +102,12 @@ public class TableViewSalonController implements Initializable {
 
             while (queryOutput.next()) {
 
-            }
-                String retrievedClient = queryOutput.getString("salonName");
-                System.out.println(retrievedClient);
+
+                String retrievedSalon = queryOutput.getString("salonName");
+                System.out.println(retrievedSalon);
                 System.out.println(salonN);
 
-                if(retrievedClient == salonN) {
+                if (retrievedSalon.equals(salonN)) {
                     AppointmentsList.add(new appointmentsSalon(
                             queryOutput.getInt("idappointments"),
                             queryOutput.getString("clientName"),
@@ -103,6 +116,7 @@ public class TableViewSalonController implements Initializable {
                             queryOutput.getString("hour")));
                 }
                 table.setItems(AppointmentsList);
+            }
             } catch (SQLException ex) {
             ex.printStackTrace();
         }
@@ -214,6 +228,7 @@ public class TableViewSalonController implements Initializable {
         edit.setCellFactory(cellFoctory);
         table.setItems(AppointmentsList);
     }
+
     String salonN;
     public void setSalonName(String nameS) {
             salonN = nameS;
