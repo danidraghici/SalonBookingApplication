@@ -16,6 +16,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import javafx.util.Callback;
 import org.loose.fis.Main;
 import org.loose.fis.MyListener;
@@ -160,28 +161,6 @@ public class salonController implements Initializable {
                 Connection connectionDB = connectNow.getDBConnection();
                 PreparedStatement psInsert = null;
 
-                /*ry{
-            Statement statement = connection.createStatement();
-            ResultSet queryOutput = statement.executeQuery("SELECT * FROM appointments");
-
-            boolean ok = true;
-
-            while (queryOutput.next() && ok == true) {
-                String retrievedSalon = queryOutput.getString("salonName");
-                String retrievedService = queryOutput.getString("serviceName");
-                String retrievedDate= queryOutput.getString("date");
-                String retrievedHour = queryOutput.getString("hour");
-
-                System.out.println(retrievedSalon);
-                System.out.println(salon);
-
-                if(retrievedSalon.equals(salon) && retrievedService.equals(serviciuF.getText()) &&
-                        retrievedDate.equals(String.valueOf(dateF.getValue())) && retrievedHour.equals(String.valueOf(oraF.getValue()))) ok = false;
-
-            }
-
-            if(ok)*/
-
                 try {
                     Statement statement = connectionDB.createStatement();
                     ResultSet queryOutput = statement.executeQuery("SELECT * FROM appointments");
@@ -234,15 +213,6 @@ public class salonController implements Initializable {
                         LocalDate today = LocalDate.now();
                         setDisable(empty || item.compareTo(today) < 0 || item.getDayOfWeek() == DayOfWeek.SUNDAY);
 
-                       /* if (item == null) {
-                            Alert alert = new Alert(Alert.AlertType.ERROR);
-                            alert.setContentText("Please select a date!");
-                            alert.show();
-                        }
-
-                        else
-
-                        */
                         if(item.equals(date))
                         {
                             setDisable(true);
@@ -253,8 +223,6 @@ public class salonController implements Initializable {
             }
         };
         calendar.setDayCellFactory(dayCellFactory);
-
-
 
 
         appointments.setOnAction(new EventHandler<ActionEvent>() {
@@ -271,10 +239,11 @@ public class salonController implements Initializable {
                 TableViewClientController tableController = loader.getController();
                 tableController.setName(client);
 
-                stage =(Stage)((Node)event.getSource()).getScene().getWindow();
-                scene = new Scene(root);
+                Scene scene = new Scene(root);
+                stage = new Stage();
                 stage.setScene(scene);
-                stage.setTitle("MyAppointments");
+                stage.setTitle("My Appointments");
+                stage.initStyle(StageStyle.UTILITY);
                 stage.show();
             }
 
