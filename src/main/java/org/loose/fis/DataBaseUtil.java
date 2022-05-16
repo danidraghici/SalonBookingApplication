@@ -211,9 +211,32 @@ public class DataBaseUtil {
                     String retrievedPassword = resultSet.getString("password");
                     if (retrievedPassword.equals(encodePassword(username,password))) {
                         String retrievedRole = resultSet.getString("role");
+<<<<<<< Updated upstream
                         if (retrievedRole.equalsIgnoreCase("admin")) {
                             String retrievedNameSalon = resultSet.getString("name");
                             changeScene(event, "/addService.fxml", retrievedNameSalon, null);
+=======
+
+                        if (retrievedRole.equalsIgnoreCase("admin")) {
+                            String retrievedNameSalon = resultSet.getString("name");
+                            FXMLLoader loader = new FXMLLoader();
+                            loader.setLocation(DataBaseUtil.class.getResource("/addService.fxml"));
+                            try {
+                                root = loader.load();
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+
+                            addServiceController addController = loader.getController();
+                            addController.setSalon(username);
+
+                            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                            scene = new Scene(root);
+                            stage.setScene(scene);
+                            stage.setTitle(retrievedNameSalon);
+                            stage.show();
+
+>>>>>>> Stashed changes
                         }
                         else if (retrievedRole.equalsIgnoreCase("client")) {
                             FXMLLoader loader = new FXMLLoader();

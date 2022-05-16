@@ -18,6 +18,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import org.loose.fis.DataBaseUtil;
 import org.loose.fis.Main;
 import org.loose.fis.MyListener;
@@ -189,5 +190,41 @@ public class addServiceController implements Initializable {
             }
         });
 
+<<<<<<< Updated upstream
+=======
+        appointments.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                FXMLLoader loader = new FXMLLoader();
+                loader.setLocation(DataBaseUtil.class.getResource("/appointmentsSalon.fxml"));
+                try {
+                    root=loader.load();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+                TableViewSalonController tableController = loader.getController();
+                tableController.setSalonName(nameS);
+
+                /*stage =(Stage)((Node)event.getSource()).getScene().getWindow();
+                scene = new Scene(root);
+                stage.setScene(scene);
+                stage.setTitle("MyAppointments");
+                stage.show();*/
+
+                Scene scene = new Scene(root);
+                Stage stage = new Stage();
+                stage.setScene(scene);
+                stage.setTitle("MyAppointments");
+                stage.initStyle(StageStyle.UTILITY);
+                stage.show();
+            }
+        });
+
+    }
+    String nameS;
+    public void setSalon(String username) {
+        nameS = username;
+>>>>>>> Stashed changes
     }
 }

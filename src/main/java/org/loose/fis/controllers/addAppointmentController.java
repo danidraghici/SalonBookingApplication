@@ -108,11 +108,63 @@ public class addAppointmentController implements Initializable {
         try{
             psInsert = connection.prepareStatement(query);
 
+<<<<<<< Updated upstream
             psInsert.setString(1,nameF.getText());
             psInsert.setString(2,serviciuF.getText());
             psInsert.setString(3,String.valueOf(dateF.getValue()));
             psInsert.setString(4,String.valueOf(oraF.getValue()));
             psInsert.executeUpdate();
+=======
+
+            boolean ok = true;
+
+
+           /* connection1 = DriverManager.getConnection("jdbc:mysql://localhost:3306/salonbooking", "root", "Eusuntlapol1");
+            Statement statement1 = connection1.createStatement();
+            ResultSet queryOutput1 = statement1.executeQuery("SELECT * FROM loggedinusers");
+            while (queryOutput1.next()) {
+                String retrievedRole = queryOutput1.getString("role");
+
+                if (retrievedRole.equalsIgnoreCase("admin")) {
+                    String retrievedNameSalon = queryOutput1.getString("name");
+                    if(retrievedNameSalon.equals(salon))
+                    {retrievedSalon = retrievedNameSalon;}
+                }}*/
+
+            while (queryOutput.next() && ok == true) {
+
+                    String retrievedSalon = queryOutput.getString("salonName");
+                    String retrievedService = queryOutput.getString("serviceName");
+                    String retrievedDate = queryOutput.getString("date");
+                    String retrievedHour = queryOutput.getString("hour");
+
+                    if(!(retrievedSalon.equals(salon)))
+                    {
+                        ok= true;
+                    }
+                    else {
+                        if (retrievedSalon.equals(salon) && retrievedService.equals(serviciuF.getText()) &&
+                                retrievedDate.equals(String.valueOf(dateF.getValue())) && retrievedHour.equals(String.valueOf(oraF.getValue())))
+                            ok = false;
+                    }
+
+            }
+
+            if(ok)
+            {
+                psInsert = connection.prepareStatement(query);
+                psInsert.setString(1,salon);
+                psInsert.setString(2,nameF.getText());
+                psInsert.setString(3,serviciuF.getText());
+                psInsert.setString(4,String.valueOf(dateF.getValue()));
+                psInsert.setString(5,String.valueOf(oraF.getValue()));
+                psInsert.executeUpdate();}
+            else{
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setContentText("The Date is not available, please select anotherone!");
+                alert.show();
+            }
+>>>>>>> Stashed changes
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
@@ -144,4 +196,16 @@ public class addAppointmentController implements Initializable {
         dateF.setValue(toLocalDate);
         oraF.setValue(ora);
     }
+<<<<<<< Updated upstream
+=======
+
+    String salon;
+    public void setSalon(String salonN) {
+        salon=salonN;
+    }
+
+    public void setSalonName(String salonN) {
+        salon=salonN;
+    }
+>>>>>>> Stashed changes
 }

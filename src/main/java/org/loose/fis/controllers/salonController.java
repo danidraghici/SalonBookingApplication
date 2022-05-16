@@ -12,6 +12,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import javafx.util.Callback;
 import org.loose.fis.Main;
 import org.loose.fis.MyListener;
@@ -140,6 +141,48 @@ public class salonController implements Initializable {
 
         }
 
+<<<<<<< Updated upstream
+=======
+        confirmButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                LocalDate value = calendar.getValue();
+                ConnectionDB connectNow = new ConnectionDB();
+                Connection connectionDB = connectNow.getDBConnection();
+                PreparedStatement psInsert = null;
+
+                try {
+                    Statement statement = connectionDB.createStatement();
+                    ResultSet queryOutput = statement.executeQuery("SELECT * FROM appointments");
+
+                    boolean ok = true;
+
+                    while (queryOutput.next() && ok == true) {
+                        String retrievedSalon = queryOutput.getString("salonName");
+                        String retrievedService = queryOutput.getString("serviceName");
+                        String retrievedDate = queryOutput.getString("date");
+                        String retrievedHour = queryOutput.getString("hour");
+
+                        if (retrievedSalon.equals(salon) && retrievedService.equals(serviceName.getText()) &&
+                                retrievedDate.equals(String.valueOf(calendar.getValue())) && retrievedHour.equals(String.valueOf(hourSelect.getValue())))
+                            ok = false;
+                    }
+                    if(ok) {
+                        psInsert = connectionDB.prepareStatement("INSERT INTO appointments (salonName,serviceName,clientName, date,hour)  VALUES (?,?,?,?,?)");
+                        psInsert.setString(1, salon);
+                        psInsert.setString(2, serviceName.getText());
+                        psInsert.setString(3, client);
+                        psInsert.setString(4, String.valueOf(calendar.getValue()));
+                        psInsert.setString(5, String.valueOf(hourSelect.getSelectionModel().getSelectedItem()));
+                        psInsert.executeUpdate();
+                    }
+                    else
+                    {
+                        Alert alert = new Alert(Alert.AlertType.ERROR);
+                        alert.setContentText("The Date is not available, please select anotherone!");
+                        alert.show();
+                    }
+>>>>>>> Stashed changes
 
         final Callback<DatePicker, DateCell> dayCellFactory = new Callback<DatePicker, DateCell>() {
             @Override
@@ -152,8 +195,11 @@ public class salonController implements Initializable {
                         LocalDate date= calendar.getValue();
                         LocalDate today = LocalDate.now();
 
+<<<<<<< Updated upstream
                         setDisable(empty || item.compareTo(today) < 0 || item.getDayOfWeek() == DayOfWeek.SUNDAY);
 
+=======
+>>>>>>> Stashed changes
                         if(item.equals(date))
                         {
                             setDisable(true);
@@ -185,6 +231,27 @@ public class salonController implements Initializable {
                         SQLException e) {
                     e.printStackTrace();
                 }
+<<<<<<< Updated upstream
+=======
+
+                TableViewClientController tableController = loader.getController();
+                tableController.setName(client);
+
+                /*stage =(Stage)((Node)event.getSource()).getScene().getWindow();
+                scene = new Scene(root);
+                stage.setScene(scene);
+                stage.setTitle("MyAppointments");
+                stage.initStyle(StageStyle.UTILITY);
+                stage.show();*/
+
+                Scene scene = new Scene(root);
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        stage.setTitle("MyAppointments");
+        stage.initStyle(StageStyle.UTILITY);
+        stage.show();
+
+>>>>>>> Stashed changes
             }
         });
 
