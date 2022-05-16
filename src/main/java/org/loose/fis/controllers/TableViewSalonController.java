@@ -76,8 +76,8 @@ public class TableViewSalonController implements Initializable {
             e.printStackTrace();
         }
 
-       addAppointmentController addController = loader.getController();
-       addController.setSalon(salonN);
+        addAppointmentController addController = loader.getController();
+        addController.setSalon(salonN);
 
         Scene scene = new Scene(root);
         Stage stage = new Stage();
@@ -104,8 +104,6 @@ public class TableViewSalonController implements Initializable {
 
 
                 String retrievedSalon = queryOutput.getString("salonName");
-                System.out.println(retrievedSalon);
-                System.out.println(salonN);
 
                 if (retrievedSalon.equals(salonN)) {
                     AppointmentsList.add(new appointmentsSalon(
@@ -117,7 +115,7 @@ public class TableViewSalonController implements Initializable {
                 }
                 table.setItems(AppointmentsList);
             }
-            } catch (SQLException ex) {
+        } catch (SQLException ex) {
             ex.printStackTrace();
         }
     }
@@ -199,6 +197,7 @@ public class TableViewSalonController implements Initializable {
                             }
 
                             addAppointmentController AddAppointmentController = loader.getController();
+                            AddAppointmentController.setSalonName(salonN);
                             AddAppointmentController.setUpdate(true);
                             AddAppointmentController.setTextField(appointment.getId(),appointment.getClient(),appointment.getServiciu(), appointment.getData().toLocalDate(),appointment.getOra());
                             Parent parent = loader.getRoot();
@@ -231,6 +230,6 @@ public class TableViewSalonController implements Initializable {
 
     String salonN;
     public void setSalonName(String nameS) {
-            salonN = nameS;
+        salonN = nameS;
     }
 }

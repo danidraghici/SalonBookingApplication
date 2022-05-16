@@ -77,6 +77,8 @@ public class SalonListController implements Initializable {
                 salonController salonController = loader.getController();
                 salonController.setSalonName(accountListView.getSelectionModel().getSelectedItem());
                 salonController.setClient(name);
+                System.out.println("salonlistcontroller client "+name);
+                System.out.println("salonlistcontroller salon "+accountListView.getSelectionModel().getSelectedItem());
 
                 stage =(Stage)((Node)event.getSource()).getScene().getWindow();
                 scene = new Scene(root);
@@ -92,9 +94,9 @@ public class SalonListController implements Initializable {
         Image listImage = new Image(listFile.toURI().toString());
         comb.setImage(listImage);
     }
-    String name;
-    public void setUsername(String salonName) {
-        name=salonName;
+     String name;
+    public void setUsername(String clientName) {
+        name = clientName;
     }
 
 }
