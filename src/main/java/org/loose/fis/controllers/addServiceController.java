@@ -18,6 +18,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import org.loose.fis.DataBaseUtil;
 import org.loose.fis.Main;
 import org.loose.fis.MyListener;
@@ -205,10 +206,11 @@ public class addServiceController implements Initializable {
                 TableViewSalonController tableController = loader.getController();
                 tableController.setSalonName(nameS);
 
-                stage =(Stage)((Node)event.getSource()).getScene().getWindow();
-                scene = new Scene(root);
+                Scene scene = new Scene(root);
+                stage = new Stage();
                 stage.setScene(scene);
-                stage.setTitle("MyAppointments");
+                stage.setTitle("My Appointments");
+                stage.initStyle(StageStyle.UTILITY);
                 stage.show();
             }
         });
