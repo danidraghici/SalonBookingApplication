@@ -213,13 +213,10 @@ public class DataBaseUtil {
             {
                 while (resultSet.next()) {
                     String retrievedPassword = resultSet.getString("password");
-                    System.out.println(retrievedPassword);
                     if (retrievedPassword.equals(encodePassword(username,password))) {
                         String retrievedRole = resultSet.getString("role");
-                        System.out.println(retrievedRole);
                         if (retrievedRole.equalsIgnoreCase("admin")) {
                             String retrievedNameSalon = resultSet.getString("name");
-                            System.out.println(retrievedNameSalon);
                             FXMLLoader loader = new FXMLLoader();
                             loader.setLocation(DataBaseUtil.class.getResource("/addService.fxml"));
                             try {
