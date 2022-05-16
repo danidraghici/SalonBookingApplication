@@ -69,9 +69,6 @@ public class TableViewClientController implements Initializable {
             while (queryOutput.next()) {
 
                 String retrievedClient = queryOutput.getString("clientName");
-                System.out.println(retrievedClient);
-                System.out.println(numeC);
-
                     if(retrievedClient.equals(numeC)){
                         AppointmentsList.add(new appointmentsClient(
                                 queryOutput.getInt("idappointments"),

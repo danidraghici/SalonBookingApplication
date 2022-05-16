@@ -65,7 +65,7 @@ public class addAppointmentController implements Initializable {
 
     @FXML
     private void save(MouseEvent event) throws SQLException {
-        connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/salonbooking", "root", "Eusuntlapol1");
+        connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/salonbooking", "root", "rootpassword");
 
         String name = nameF.getText();
         String serviciu = serviciuF.getText();
@@ -82,7 +82,7 @@ public class addAppointmentController implements Initializable {
             getQuery();
             insert();
             clean();
-            
+
         }
     }
 
@@ -118,11 +118,14 @@ public class addAppointmentController implements Initializable {
                 String retrievedDate= queryOutput.getString("date");
                 String retrievedHour = queryOutput.getString("hour");
 
-                System.out.println(retrievedSalon);
-                System.out.println(salon);
-
-                if(retrievedSalon.equals(salon) && retrievedService.equals(serviciuF.getText()) &&
-                        retrievedDate.equals(String.valueOf(dateF.getValue())) && retrievedHour.equals(String.valueOf(oraF.getValue()))) ok = false;
+                if(!retrievedSalon.equals(salon)){
+                    ok=true;
+                }
+                else {
+                    if (retrievedSalon.equals(salon) && retrievedService.equals(serviciuF.getText()) &&
+                            retrievedDate.equals(String.valueOf(dateF.getValue())) && retrievedHour.equals(String.valueOf(oraF.getValue())))
+                        ok = false;
+                }
 
             }
 
@@ -130,11 +133,11 @@ public class addAppointmentController implements Initializable {
             {psInsert = connection.prepareStatement(query);
 
                 psInsert.setString(1,salon);
-            psInsert.setString(2,nameF.getText());
-            psInsert.setString(3,serviciuF.getText());
-            psInsert.setString(4,String.valueOf(dateF.getValue()));
-            psInsert.setString(5,String.valueOf(oraF.getValue()));
-            psInsert.executeUpdate();}
+                psInsert.setString(2,nameF.getText());
+                psInsert.setString(3,serviciuF.getText());
+                psInsert.setString(4,String.valueOf(dateF.getValue()));
+                psInsert.setString(5,String.valueOf(oraF.getValue()));
+                psInsert.executeUpdate();}
             else{
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setContentText("The Date is not available, please select anotherone!");
@@ -174,6 +177,10 @@ public class addAppointmentController implements Initializable {
 
     String salon;
     public void setSalon(String salonN) {
+        salon=salonN;
+    }
+
+    public void setSalonName(String salonN) {
         salon=salonN;
     }
 }

@@ -39,7 +39,7 @@ public class addControllers implements Initializable {
         ResultSet resultSet = null;
 
         try {
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/salonbooking", "root", "Eusuntlapol1");
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/salonbooking", "root", "rootpassword");
             psCheckUserExist = connection.prepareStatement("SELECT * FROM salonservices ");
             resultSet = psCheckUserExist.executeQuery();
 
