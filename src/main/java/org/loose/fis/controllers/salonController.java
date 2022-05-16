@@ -161,44 +161,49 @@ public class salonController implements Initializable {
                 Connection connectionDB = connectNow.getDBConnection();
                 PreparedStatement psInsert = null;
 
-                try {
-                    Statement statement = connectionDB.createStatement();
-                    ResultSet queryOutput = statement.executeQuery("SELECT * FROM appointments");
+                if (calendar.getValue() == null) {
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setContentText("Please choose a date for your appointment!");
+                    alert.show();
+                } else if (hourSelect.getSelectionModel().getSelectedItem() == null) {
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setContentText("Please choose an hour for your appointment!");
+                    alert.show();
+                } else {
+                    try {
+                        Statement statement = connectionDB.createStatement();
+                        ResultSet queryOutput = statement.executeQuery("SELECT * FROM appointments");
 
-                    boolean ok = true;
+                        boolean ok = true;
 
-                    while (queryOutput.next() && ok == true) {
-                        String retrievedSalon = queryOutput.getString("salonName");
-                        String retrievedService = queryOutput.getString("serviceName");
-                        String retrievedDate = queryOutput.getString("date");
-                        String retrievedHour = queryOutput.getString("hour");
+                        while (queryOutput.next() && ok == true) {
+                            String retrievedSalon = queryOutput.getString("salonName");
+                            String retrievedService = queryOutput.getString("serviceName");
+                            String retrievedDate = queryOutput.getString("date");
+                            String retrievedHour = queryOutput.getString("hour");
 
-                        System.out.println(retrievedSalon);
-                        System.out.println(salon);
+                            if (retrievedSalon.equals(salon) && retrievedService.equals(serviceName.getText()) &&
+                                    retrievedDate.equals(String.valueOf(calendar.getValue())) && retrievedHour.equals(String.valueOf(hourSelect.getValue())))
+                                ok = false;
+                        }
+                        if (ok) {
+                            psInsert = connectionDB.prepareStatement("INSERT INTO appointments (salonName,serviceName,clientName, date,hour)  VALUES (?,?,?,?,?)");
+                            psInsert.setString(1, salon);
+                            psInsert.setString(2, serviceName.getText());
+                            psInsert.setString(3, client);
+                            psInsert.setString(4, String.valueOf(calendar.getValue()));
+                            psInsert.setString(5, String.valueOf(hourSelect.getSelectionModel().getSelectedItem()));
+                            psInsert.executeUpdate();
+                        } else {
+                            Alert alert = new Alert(Alert.AlertType.ERROR);
+                            alert.setContentText("The Date is not available, please select anotherone!");
+                            alert.show();
+                        }
 
-                        if (retrievedSalon.equals(salon) && retrievedService.equals(serviceName.getText()) &&
-                                retrievedDate.equals(String.valueOf(calendar.getValue())) && retrievedHour.equals(String.valueOf(hourSelect.getValue())))
-                            ok = false;
+                    } catch (
+                            SQLException e) {
+                        e.printStackTrace();
                     }
-                    if(ok) {
-                        psInsert = connectionDB.prepareStatement("INSERT INTO appointments (salonName,serviceName,clientName, date,hour)  VALUES (?,?,?,?,?)");
-                        psInsert.setString(1, salon);
-                        psInsert.setString(2, serviceName.getText());
-                        psInsert.setString(3, client);
-                        psInsert.setString(4, String.valueOf(calendar.getValue()));
-                        psInsert.setString(5, String.valueOf(hourSelect.getSelectionModel().getSelectedItem()));
-                        psInsert.executeUpdate();
-                    }
-                    else
-                    {
-                        Alert alert = new Alert(Alert.AlertType.ERROR);
-                        alert.setContentText("The Date is not available, please select anotherone!");
-                        alert.show();
-                    }
-
-                } catch (
-                        SQLException e) {
-                    e.printStackTrace();
                 }
             }
             });
