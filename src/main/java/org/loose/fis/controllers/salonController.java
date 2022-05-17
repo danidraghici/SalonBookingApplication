@@ -1,6 +1,7 @@
 package org.loose.fis.controllers;
 
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -32,7 +33,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
-import static javafx.application.Application.launch;
 import static org.loose.fis.DataBaseUtil.changeScene;
 
 public class salonController implements Initializable {
@@ -56,6 +56,8 @@ public class salonController implements Initializable {
     private Button appointments;
     @FXML
     private ChoiceBox hourSelect;
+    @FXML
+    private Button backButton;
 
     String client, salon;
     private Stage stage;
@@ -207,6 +209,16 @@ public class salonController implements Initializable {
                 }
             }
             });
+
+        backButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                changeScene(event, "/login.fxml", "Login", null);
+            }
+        });
+
+
+
         final Callback<DatePicker, DateCell> dayCellFactory = new Callback<DatePicker, DateCell>() {
             @Override
             public DateCell call(final DatePicker datePicker) {
@@ -244,7 +256,7 @@ public class salonController implements Initializable {
                 TableViewClientController tableController = loader.getController();
                 tableController.setName(client);
 
-                Scene scene = new Scene(root);
+                scene = new Scene(root);
                 stage = new Stage();
                 stage.setScene(scene);
                 stage.setTitle("My Appointments");

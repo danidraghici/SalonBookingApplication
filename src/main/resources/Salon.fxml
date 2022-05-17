@@ -100,9 +100,14 @@
                         <HBox alignment="CENTER" prefHeight="37.0" prefWidth="238.0">
                            <children>
 
-                              <Button fx:id="confirmButton" mnemonicParsing="false" style="-fx-background-color: transparent; -fx-cursor: hand; -fx-border-radius: 30;" text="Confirm" textFill="#480db5">
+                              <Button fx:id="confirmButton" mnemonicParsing="false" prefHeight="26.0" prefWidth="138.0" style="-fx-background-color: transparent; -fx-cursor: hand; -fx-border-radius: 30;" text="Confirm" textFill="#480db5">
 
 
+                                 <font>
+                                    <Font name="Georgia" size="14.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="backButton" mnemonicParsing="false" prefHeight="26.0" prefWidth="114.0" style="-fx-background-color: transparent; -fx-cursor: hand;" text="Back" textFill="#480db5">
                                  <font>
                                     <Font name="Georgia" size="14.0" />
                                  </font>

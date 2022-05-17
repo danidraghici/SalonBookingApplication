@@ -79,8 +79,8 @@ public class TableViewSalonController implements Initializable {
         addAppointmentController addController = loader.getController();
         addController.setSalon(salonN);
 
-        Scene scene = new Scene(root);
-        Stage stage = new Stage();
+        scene = new Scene(root);
+        stage = new Stage();
         stage.setScene(scene);
         stage.initStyle(StageStyle.UTILITY);
         stage.show();
