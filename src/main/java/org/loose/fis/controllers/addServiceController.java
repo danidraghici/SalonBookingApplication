@@ -163,7 +163,7 @@ public class addServiceController implements Initializable {
                     psInsert.setString(1, serviceName.getText());
                     psInsert.executeUpdate();
 
-                    changeScene(event, "/addService.fxml", "Salon", null);
+                    changeScene(event, "/login.fxml", "Login", null);
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }

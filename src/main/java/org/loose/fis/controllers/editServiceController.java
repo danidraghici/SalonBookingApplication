@@ -51,7 +51,7 @@ public class editServiceController implements Initializable {
                     e.printStackTrace();
                 }
 
-                DataBaseUtil.changeScene(event, "/addService.fxml","Salon",null);
+                changeScene(event,"/login.fxml", "Login", null);
 
             }
 
