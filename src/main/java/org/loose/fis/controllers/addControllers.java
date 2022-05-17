@@ -51,7 +51,7 @@ public class addControllers implements Initializable {
 
             psInsert.executeUpdate();
 
-            changeScene(event, "/addService.fxml", "Salon", null);
+            changeScene(event, "/login.fxml", "Login", null);
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -98,13 +98,17 @@ public class addControllers implements Initializable {
             public void handle(ActionEvent event) {
 
                 if(!name.getText().trim().isEmpty() && !price.getText().trim().isEmpty())
-                    addService(event,name.getText(),price.getText(),"/docs/new.png");
+
+                    addService(event, name.getText(), price.getText(), "/docs/new.png");
+
                 else
                 {
                     Alert alert = new Alert(Alert.AlertType.ERROR);
                     alert.setContentText("Please fill all information!");
                     alert.show();
                 }
+
+
             }
         });
 
