@@ -1,16 +1,12 @@
 package org.loose.fis.controllers;
 
 import javafx.event.ActionEvent;
-import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
-
-import javafx.scene.Node;
 import javafx.scene.Parent;
-
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
@@ -59,7 +55,7 @@ public class salonController implements Initializable {
     @FXML
     private Button backButton;
 
-    String client, salon;
+    private String client, salon;
     private Stage stage;
     private Scene scene;
     private Parent root;
@@ -213,7 +209,7 @@ public class salonController implements Initializable {
         backButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                changeScene(event, "/login.fxml", "Login", null);
+                changeScene(event, "/login.fxml", "Login");
             }
         });
 

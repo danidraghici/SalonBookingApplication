@@ -64,7 +64,7 @@ public class RegistrationClientController implements Initializable {
         SignInButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                DataBaseUtil.changeScene(event, "/login.fxml","Login",null);
+                DataBaseUtil.changeScene(event, "/login.fxml","Login");
             }
         });
 

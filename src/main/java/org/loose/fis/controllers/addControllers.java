@@ -10,7 +10,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import org.loose.fis.DataBaseUtil;
 
 import java.io.File;
 import java.net.URL;
@@ -18,7 +17,7 @@ import java.sql.*;
 import java.util.ResourceBundle;
 
 import static org.loose.fis.DataBaseUtil.changeScene;
-import static org.loose.fis.DataBaseUtil.encodePassword;
+
 
 public class addControllers implements Initializable {
 
@@ -51,7 +50,7 @@ public class addControllers implements Initializable {
 
             psInsert.executeUpdate();
 
-            changeScene(event, "/login.fxml", "Login", null);
+            changeScene(event, "/login.fxml", "Login");
 
         } catch (SQLException e) {
             e.printStackTrace();

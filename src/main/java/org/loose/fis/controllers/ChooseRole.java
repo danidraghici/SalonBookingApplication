@@ -30,14 +30,14 @@ public class ChooseRole implements Initializable {
         client.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                DataBaseUtil.changeScene(event, "/registrationClient.fxml", "Client Registration ", null);
+                DataBaseUtil.changeScene(event, "/registrationClient.fxml", "Client Registration ");
             }
         });
 
         salon.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                DataBaseUtil.changeScene(event, "/registration.fxml", "Salon Registration", null);
+                DataBaseUtil.changeScene(event, "/registration.fxml", "Salon Registration");
             }
         });
 

@@ -3,6 +3,7 @@ package org.loose.fis.model;
 public class service {
     private String name;
     private String imgSrc;
+    private double price;
 
     public String getName() {
         return name;
@@ -28,14 +29,4 @@ public class service {
         this.price = price;
     }
 
-    public String getColor() {
-        return color;
-    }
-
-    public void setColor(String color) {
-        this.color = color;
-    }
-
-    private double price;
-    private String color;
 }

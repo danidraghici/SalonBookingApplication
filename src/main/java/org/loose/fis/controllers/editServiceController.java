@@ -6,7 +6,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import org.loose.fis.DataBaseUtil;
 
 import java.net.URL;
 import java.sql.Connection;
@@ -51,7 +50,7 @@ public class editServiceController implements Initializable {
                     e.printStackTrace();
                 }
 
-                changeScene(event,"/login.fxml", "Login", null);
+                changeScene(event,"/login.fxml", "Login");
 
             }
 

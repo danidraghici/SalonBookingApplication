@@ -10,9 +10,6 @@ import javafx.stage.Stage;
 import org.loose.fis.controllers.SalonListController;
 
 import org.loose.fis.controllers.addServiceController;
-import org.loose.fis.controllers.salonController;
-
-
 import java.io.IOException;
 
 import java.nio.charset.StandardCharsets;
@@ -24,7 +21,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 
 
-
 public class DataBaseUtil {
 
 
@@ -32,27 +28,14 @@ public class DataBaseUtil {
     private static Scene scene;
     private static Parent root;
 
-    public static void changeScene(ActionEvent event, String fxmlFile, String title, String username) {
-        Parent root = null;
-
-        if (username != null) {
-            try {
-                FXMLLoader loader = new FXMLLoader(DataBaseUtil.class.getResource(fxmlFile));
-                root = loader.load();
-
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        } else   // username == null => will move from one scene to another
-        {
-            try {
+    public static void changeScene(ActionEvent event, String fxmlFile, String title) {
+        try {
                 root = FXMLLoader.load(DataBaseUtil.class.getResource(fxmlFile));
             } catch (IOException e) {
                 e.printStackTrace();
             }
-        }
 
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setTitle(title);
         stage.setScene(new Scene(root, 600, 400));
         stage.show();
@@ -88,7 +71,7 @@ public class DataBaseUtil {
                 psInsert.setString(5, role);
                 psInsert.executeUpdate();
 
-                changeScene(event, "/login.fxml", "Login", null);
+                changeScene(event, "/login.fxml", "Login");
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -154,7 +137,7 @@ public class DataBaseUtil {
 
                 psInsert.executeUpdate();
 
-                changeScene(event, "/login.fxml", "Login", null);
+                changeScene(event, "/login.fxml", "Login");
             }
         } catch (SQLException e) {
             e.printStackTrace();
