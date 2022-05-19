@@ -24,11 +24,11 @@ public class addAppointmentController implements Initializable {
     @FXML
     private ChoiceBox oraF;
 
-    String query = null;
-    appointmentsSalon appointments = null;
+    private String query = null;
+    private appointmentsSalon appointments = null;
     private boolean update;
 
-    int Id;
+    private int Id;
 
     Connection connection = null;
     PreparedStatement psInsert = null;
@@ -140,7 +140,7 @@ public class addAppointmentController implements Initializable {
                 psInsert.executeUpdate();}
             else{
                 Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setContentText("The Date is not available, please select anotherone!");
+                alert.setContentText("The Date is not available, please select another one!");
                 alert.show();
             }
         } catch (SQLException ex) {
@@ -175,7 +175,7 @@ public class addAppointmentController implements Initializable {
         oraF.setValue(ora);
     }
 
-    String salon;
+    private String salon;
     public void setSalon(String salonN) {
         salon=salonN;
     }

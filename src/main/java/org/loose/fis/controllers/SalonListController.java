@@ -13,7 +13,6 @@ import javafx.scene.control.ListView;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
-import org.loose.fis.DataBaseUtil;
 
 import java.io.File;
 import java.io.IOException;
@@ -92,7 +91,7 @@ public class SalonListController implements Initializable {
         Image listImage = new Image(listFile.toURI().toString());
         comb.setImage(listImage);
     }
-     String name;
+    private String name;
     public void setUsername(String clientName) {
         name = clientName;
     }

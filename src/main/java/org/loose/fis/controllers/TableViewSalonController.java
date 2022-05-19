@@ -6,7 +6,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TableCell;
@@ -48,8 +47,8 @@ public class TableViewSalonController implements Initializable {
     @FXML
     private TableColumn<appointmentsSalon, String> edit;
 
-    appointmentsSalon appointment = null;
-    PreparedStatement preparedStatement = null ;
+    private appointmentsSalon appointment = null;
+    private PreparedStatement preparedStatement = null ;
 
     private Stage stage;
     private Scene scene;
@@ -228,7 +227,7 @@ public class TableViewSalonController implements Initializable {
         table.setItems(AppointmentsList);
     }
 
-    String salonN;
+    private String salonN;
     public void setSalonName(String nameS) {
         salonN = nameS;
     }

@@ -2,15 +2,9 @@ package org.loose.fis.controllers;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -19,14 +13,11 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
-import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 import javafx.util.Callback;
 import org.loose.fis.model.appointmentsClient;
 import org.loose.fis.model.appointmentsSalon;
 
 import java.io.File;
-import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
 import java.util.ResourceBundle;
@@ -48,15 +39,9 @@ public class TableViewClientController implements Initializable {
     private TableColumn<appointmentsSalon, String> ora;
     @FXML
     private TableColumn<appointmentsSalon, String> edit;
-    @FXML
-    private Button backButton;
 
-    private Stage stage;
-    private Scene scene;
-    private Parent root;
-
-    appointmentsClient appointment = null;
-    PreparedStatement preparedStatement = null ;
+    private appointmentsClient appointment = null;
+    private PreparedStatement preparedStatement = null ;
 
     ObservableList<appointmentsClient> AppointmentsList = FXCollections.observableArrayList();
 
@@ -173,7 +158,7 @@ public class TableViewClientController implements Initializable {
         edit.setCellFactory(cellFoctory);
         table.setItems(AppointmentsList);
     }
-    String numeC;
+    private String numeC;
     public void setName(String client) {
         numeC = client;
     }

@@ -4,11 +4,11 @@ import java.sql.Date;
 
 public class appointmentsClient {
 
-    int id;
-    String salon;
-    String serviciu;
-    Date data;
-    String ora;
+    private int id;
+    private String salon;
+    private String serviciu;
+    private Date data;
+    private String ora;
 
     public appointmentsClient(int id, String salon, String serviciu, Date data, String ora) {
         this.id = id;

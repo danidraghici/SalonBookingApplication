@@ -147,7 +147,7 @@ public class addServiceController implements Initializable {
         add.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                changeScene(event, "/add.fxml", "Please Complete!", null);
+                changeScene(event, "/add.fxml", "Please Complete!");
             }
         });
 
@@ -163,7 +163,7 @@ public class addServiceController implements Initializable {
                     psInsert.setString(1, serviceName.getText());
                     psInsert.executeUpdate();
 
-                    changeScene(event, "/login.fxml", "Login", null);
+                    changeScene(event, "/login.fxml", "Login");
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
@@ -216,7 +216,7 @@ public class addServiceController implements Initializable {
         });
 
     }
-    String nameS;
+    private String nameS;
     public void setSalon(String username) {
         nameS = username;
     }
