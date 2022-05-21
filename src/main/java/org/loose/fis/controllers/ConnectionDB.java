@@ -5,9 +5,9 @@ import java.sql.DriverManager;
 
 public class ConnectionDB {
 
-    public Connection databaseLink;
+    public static Connection databaseLink;
 
-    public Connection getDBConnection()
+    public static Connection getDBConnection()
     {
         String url = "jdbc:mysql://localhost:3306/salonbooking";
         String user = "root";

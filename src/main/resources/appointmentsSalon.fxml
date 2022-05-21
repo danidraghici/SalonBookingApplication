@@ -11,9 +11,9 @@
         <columns>
             <TableColumn fx:id="id" prefWidth="61.0" text="ID" />
           <TableColumn fx:id="client" prefWidth="102.0" text="Client" />
-          <TableColumn fx:id="serviciu" minWidth="9.0" prefWidth="112.0" style="-fx-aligment: center;" text="Serviciu" />
-            <TableColumn fx:id="data" minWidth="0.0" prefWidth="99.0" text="Data" />
-            <TableColumn fx:id="ora" minWidth="0.0" prefWidth="73.0" text="Ora" />
+          <TableColumn fx:id="serviciu" minWidth="9.0" prefWidth="112.0" style="-fx-aligment: center;" text="Service" />
+            <TableColumn fx:id="data" minWidth="0.0" prefWidth="99.0" text="Date" />
+            <TableColumn fx:id="ora" minWidth="0.0" prefWidth="73.0" text="Hour" />
             <TableColumn fx:id="edit" minWidth="0.0" prefWidth="124.0" text="Edit" />
         </columns>
       </TableView>
