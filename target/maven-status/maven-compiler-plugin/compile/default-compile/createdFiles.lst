@@ -1,3 +1,4 @@
+org\loose\fis\controllers\ChooseRole.class
 org\loose\fis\controllers\addControllers$1.class
 org\loose\fis\controllers\editServiceController$1.class
 org\loose\fis\controllers\ChooseRole$2.class
@@ -10,6 +11,7 @@ org\loose\fis\controllers\ConnectionDB.class
 org\loose\fis\controllers\salonController$3.class
 org\loose\fis\controllers\TableViewClientController$1.class
 org\loose\fis\controllers\addAppointmentController$1.class
+org\loose\fis\controllers\RegistrationClientController.class
 org\loose\fis\controllers\addServiceController$6.class
 org\loose\fis\controllers\salonController$4$1.class
 org\loose\fis\controllers\RegistrationSalonController$1.class
@@ -18,6 +20,7 @@ org\loose\fis\controllers\salonController$4.class
 org\loose\fis\controllers\SalonListController$1.class
 org\loose\fis\controllers\addServiceController$4.class
 org\loose\fis\controllers\TableViewSalonController$1.class
+org\loose\fis\controllers\loginController.class
 org\loose\fis\controllers\RegistrationClientController$2.class
 org\loose\fis\model\service.class
 org\loose\fis\controllers\loginController$2.class
@@ -27,13 +30,16 @@ org\loose\fis\DataBaseUtil.class
 org\loose\fis\controllers\salonController.class
 org\loose\fis\controllers\loginController$1.class
 org\loose\fis\controllers\addControllers.class
+org\loose\fis\controllers\addAppointmentController.class
 org\loose\fis\controllers\salonController$2.class
 org\loose\fis\controllers\TableViewClientController.class
+org\loose\fis\Main.class
 org\loose\fis\controllers\salonController$5.class
 org\loose\fis\controllers\editServiceController.class
 org\loose\fis\controllers\RegistrationClientController$1.class
 org\loose\fis\controllers\RegistrationSalonController$2.class
 org\loose\fis\controllers\ChooseRole$1.class
+org\loose\fis\controllers\RegistrationSalonController.class
 org\loose\fis\controllers\SalonListController.class
 org\loose\fis\controllers\addAppointmentController$1$1.class
 org\loose\fis\controllers\addServiceController$5.class
