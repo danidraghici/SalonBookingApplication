@@ -49,7 +49,7 @@ public class addServiceController implements Initializable {
     @FXML
     private GridPane grid;
     @FXML
-    private Button delete, edit, add;
+    private Button delete, edit, add, backButton;
     private Stage stage;
     private Scene scene;
     private Parent root;
@@ -212,6 +212,13 @@ public class addServiceController implements Initializable {
                 stage.setTitle("My Appointments");
                 stage.initStyle(StageStyle.UTILITY);
                 stage.show();
+            }
+        });
+
+        backButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                changeScene(event, "/login.fxml", "Login");
             }
         });
 

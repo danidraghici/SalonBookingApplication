@@ -1,22 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #E3D3DE;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.loose.fis.controllers.TableViewClientController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #E3D3DE;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.loose.fis.controllers.TableViewClientController">
     <children>
         <TableView fx:id="table" layoutX="14.0" layoutY="135.0" prefHeight="200.0" prefWidth="572.0" style="-fx-background-color: #FCF1F5; -fx-aligment: center;">
             <columns>
                 <TableColumn fx:id="id" prefWidth="61.0" text="ID" />
                 <TableColumn fx:id="salon" prefWidth="102.0" text="Salon" />
-                <TableColumn fx:id="serviciu" minWidth="9.0" prefWidth="112.0" style="-fx-aligment: center;" text="Serviciu" />
-                <TableColumn fx:id="data" minWidth="0.0" prefWidth="99.0" text="Data" />
-                <TableColumn fx:id="ora" minWidth="0.0" prefWidth="73.0" text="Ora" />
+                <TableColumn fx:id="serviciu" minWidth="9.0" prefWidth="112.0" style="-fx-aligment: center;" text="Service" />
+                <TableColumn fx:id="data" minWidth="0.0" prefWidth="99.0" text="Date" />
+                <TableColumn fx:id="ora" minWidth="0.0" prefWidth="73.0" text="Hour" />
                 <TableColumn fx:id="edit" minWidth="0.0" prefWidth="124.0" text="Edit" />
             </columns>
         </TableView>
