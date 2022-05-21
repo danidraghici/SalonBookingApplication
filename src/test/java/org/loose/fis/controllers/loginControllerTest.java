@@ -16,8 +16,10 @@ import static org.testfx.assertions.api.Assertions.assertThat;
 @ExtendWith(ApplicationExtension.class)
 class loginControllerTest {
 
-    public static final String USERNAME = "usernameTest";
-    public static final String PASSWORD = "passwordTest";
+    public static final String USERNAMECLIENT = "usernameTest";
+    public static final String PASSWORDCLIENT = "passwordTest";
+    public static final String USERNAMESALON = "usernameSalonTest";
+    public static final String PASSWORDSALON = "passwordSalonTest";
 
 
     @BeforeEach
@@ -35,13 +37,25 @@ class loginControllerTest {
     }
 
     @Test
-    void testLoginUser(FxRobot robot)
+    void testLoginClient(FxRobot robot)
     {
         robot.clickOn("#usernameTextField");
-        robot.write(USERNAME);
+        robot.write(USERNAMECLIENT);
 
         robot.clickOn("#passwordField");
-        robot.write(PASSWORD);
+        robot.write(PASSWORDCLIENT);
+
+        robot.clickOn("#loginButton");
+    }
+
+    @Test
+    void testLoginSalon(FxRobot robot)
+    {
+        robot.clickOn("#usernameTextField");
+        robot.write(USERNAMESALON);
+
+        robot.clickOn("#passwordField");
+        robot.write(PASSWORDSALON);
 
         robot.clickOn("#loginButton");
     }
@@ -53,7 +67,7 @@ class loginControllerTest {
         robot.write("usernameIncorrect");
 
         robot.clickOn("#passwordField");
-        robot.write(PASSWORD);
+        robot.write(PASSWORDCLIENT);
 
         robot.clickOn("#loginButton");
     }
@@ -62,7 +76,7 @@ class loginControllerTest {
     void testLoginUserIfPasswordIsIncorrect(FxRobot robot)
     {
         robot.clickOn("#usernameTextField");
-        robot.write(USERNAME);
+        robot.write(USERNAMECLIENT);
 
         robot.clickOn("#passwordField");
         robot.write("passwordIncorrect");
@@ -74,7 +88,7 @@ class loginControllerTest {
     void testLoginUserIfPasswordIsBlank(FxRobot robot)
     {
         robot.clickOn("#usernameTextField");
-        robot.write(USERNAME);
+        robot.write(USERNAMECLIENT);
 
         robot.clickOn("#passwordField");
 
@@ -87,7 +101,7 @@ class loginControllerTest {
         robot.clickOn("#usernameTextField");
 
         robot.clickOn("#passwordField");
-        robot.write(PASSWORD);
+        robot.write(PASSWORDCLIENT);
 
         robot.clickOn("#loginButton");
     }
