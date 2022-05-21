@@ -11,7 +11,6 @@ org\loose\fis\controllers\salonController$3.class
 org\loose\fis\controllers\TableViewClientController$1.class
 org\loose\fis\controllers\addAppointmentController$1.class
 org\loose\fis\controllers\addServiceController$6.class
-org\loose\fis\services\FileSystemService.class
 org\loose\fis\controllers\salonController$4$1.class
 org\loose\fis\controllers\RegistrationSalonController$1.class
 org\loose\fis\controllers\TableViewSalonController.class
