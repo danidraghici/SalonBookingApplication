@@ -99,7 +99,6 @@ class loginControllerTest {
         robot.clickOn("#passwordField");
 
         robot.clickOn("#loginButton");
-        assertThat(robot.lookup("#loginMessage").queryLabeled()).hasText("Please enter your data!");
      }
 
     @Test
