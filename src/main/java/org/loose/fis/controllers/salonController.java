@@ -69,7 +69,7 @@ public class salonController implements Initializable {
         service serv;
 
         ConnectionDB connectNow = new ConnectionDB();
-        Connection connectionDB = connectNow.getDBConnection();
+        Connection connectionDB = ConnectionDB.getDBConnection();
 
         try{
 
