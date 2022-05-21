@@ -65,7 +65,7 @@ public class addAppointmentController implements Initializable {
 
     @FXML
     private void save(MouseEvent event) throws SQLException {
-        connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/salonbooking", "root", "rootpassword");
+        connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/salonbooking", "root", "Eusuntlapol1");
 
         String name = nameF.getText();
         String serviciu = serviciuF.getText();
