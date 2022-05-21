@@ -1,0 +1,8 @@
+org\loose\fis\controllers\ChooseRoleTest.class
+org\loose\fis\controllers\salonControllerTest.class
+org\loose\fis\controllers\loginControllerTest.class
+org\loose\fis\controllers\RegistrationClientControllerTest.class
+org\loose\fis\controllers\editServiceControllerTest.class
+org\loose\fis\controllers\addControllersTest.class
+org\loose\fis\controllers\RegistrationSalonControllerTest.class
+org\loose\fis\controllers\SalonListControllerTest.class
