@@ -4,7 +4,7 @@ Follow the steps linked below
 
 * [Install MySQL](https://www.youtube.com/watch?v=OM4aZJW_Ojs&t=321s)
 
-# How to import data in MySQL
+# How to import data in MySQL 
 
 Open MySQL and click on your connection.
 
