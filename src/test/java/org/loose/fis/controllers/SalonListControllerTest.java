@@ -16,12 +16,6 @@ import static org.junit.jupiter.api.Assertions.*;
 @ExtendWith(ApplicationExtension.class)
 class SalonListControllerTest {
 
-    @BeforeEach
-    void setUp()
-    {
-        ConnectionDB.getDBConnection();
-    }
-
     @Start
     void start(Stage primaryStage)throws Exception
     {

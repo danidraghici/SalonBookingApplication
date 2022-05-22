@@ -156,7 +156,7 @@ public class salonController implements Initializable {
             public void handle(ActionEvent actionEvent) {
                 LocalDate value = calendar.getValue();
                 ConnectionDB connectNow = new ConnectionDB();
-                Connection connectionDB = ConnectionDB.getDBConnection();
+                Connection connectionDB = connectNow.getDBConnection();
                 PreparedStatement psInsert = null;
 
                 if (calendar.getValue() == null) {

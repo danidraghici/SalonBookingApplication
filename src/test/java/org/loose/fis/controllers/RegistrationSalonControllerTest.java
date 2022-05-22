@@ -3,8 +3,8 @@ package org.loose.fis.controllers;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.input.KeyCode;
 import javafx.stage.Stage;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.testfx.api.FxRobot;
@@ -18,12 +18,6 @@ class RegistrationSalonControllerTest {
     public static final String PHONE = "0744445123";
     public static final String ADDRESS= "Timisoara";
     public static final String PASSWORD="passwordSalonTest";
-
-    @BeforeEach
-    void setUp()
-    {
-        ConnectionDB.getDBConnection();
-    }
 
     @Start
     void start(Stage primaryStage)throws Exception
@@ -60,6 +54,7 @@ class RegistrationSalonControllerTest {
         robot.clickOn("#salon_password_registration");
 
         robot.clickOn("#salon_register");
+        robot.press(KeyCode.ENTER);
     }
 
     @Test

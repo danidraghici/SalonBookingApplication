@@ -17,12 +17,6 @@ class addControllersTest {
     public static final String SERVICE = "NewService";
     public static final String PRICE = "101.10";
 
-    @BeforeEach
-    void setUp()
-    {
-        ConnectionDB.getDBConnection();
-    }
-
     @Start
     void start(Stage primaryStage)throws Exception
     {

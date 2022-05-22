@@ -39,7 +39,7 @@ public class SalonListController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resourceBundle) {
     ConnectionDB connectNow = new ConnectionDB();
-    Connection connectionDB = ConnectionDB.getDBConnection();
+    Connection connectionDB = connectNow.getDBConnection();
 
         try{
 
