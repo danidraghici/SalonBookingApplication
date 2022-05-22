@@ -3,15 +3,14 @@ package org.loose.fis.controllers;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.input.KeyCode;
 import javafx.stage.Stage;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.testfx.api.FxRobot;
 import org.testfx.framework.junit5.ApplicationExtension;
 import org.testfx.framework.junit5.Start;
 
-import static org.testfx.assertions.api.Assertions.assertThat;
 
 @ExtendWith(ApplicationExtension.class)
 class loginControllerTest {
@@ -20,13 +19,6 @@ class loginControllerTest {
     public static final String PASSWORDCLIENT = "passwordTest";
     public static final String USERNAMESALON = "usernameSalonTest";
     public static final String PASSWORDSALON = "passwordSalonTest";
-
-
-    @BeforeEach
-    void setUp()
-    {
-        ConnectionDB.getDBConnection();
-    }
 
     @Start
     void start(Stage primaryStage)throws Exception
@@ -46,6 +38,7 @@ class loginControllerTest {
         robot.write(PASSWORDCLIENT);
 
         robot.clickOn("#loginButton");
+
     }
 
     @Test
@@ -58,6 +51,7 @@ class loginControllerTest {
         robot.write(PASSWORDSALON);
 
         robot.clickOn("#loginButton");
+
     }
 
     @Test
@@ -70,6 +64,7 @@ class loginControllerTest {
         robot.write(PASSWORDCLIENT);
 
         robot.clickOn("#loginButton");
+        robot.press(KeyCode.ENTER);
     }
 
     @Test
@@ -82,6 +77,7 @@ class loginControllerTest {
         robot.write("passwordIncorrect");
 
         robot.clickOn("#loginButton");
+        robot.press(KeyCode.ENTER);
     }
 
     @Test
@@ -93,6 +89,7 @@ class loginControllerTest {
         robot.clickOn("#passwordField");
 
         robot.clickOn("#loginButton");
+        robot.press(KeyCode.ENTER);
     }
 
     @Test
@@ -104,6 +101,7 @@ class loginControllerTest {
         robot.write(PASSWORDCLIENT);
 
         robot.clickOn("#loginButton");
+        robot.press(KeyCode.ENTER);
     }
 
     @Test
@@ -113,6 +111,7 @@ class loginControllerTest {
         robot.clickOn("#passwordField");
 
         robot.clickOn("#loginButton");
+        robot.press(KeyCode.ENTER);
      }
 
     @Test

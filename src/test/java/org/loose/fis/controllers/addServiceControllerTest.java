@@ -14,11 +14,6 @@ import org.testfx.framework.junit5.Start;
 import static org.junit.jupiter.api.Assertions.*;
 @ExtendWith(ApplicationExtension.class)
 class addServiceControllerTest {
-    @BeforeEach
-    void setUp()
-    {
-        ConnectionDB.getDBConnection();
-    }
 
     @Start
     void start(Stage primaryStage)throws Exception
